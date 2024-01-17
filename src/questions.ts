@@ -10,9 +10,8 @@ const questions: Question[] = [];
 function createQuestion(statement: string, answer: string, options: string[]): Question {
   return { id: (questions.length + 1), statement, answer, options }
 }
-
 questions.push(createQuestion (
-  "Is this code TypeScript?",
+  "Does gitignore work?",
   "Yes",
   ["No","I don't care"]
 ));
