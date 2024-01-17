@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#clock-ui { flex: 1; }
+#questions-ui {
+  flex: 4;
+  background-color: aqua;
+}
+#footer-ui { flex: 1; }
