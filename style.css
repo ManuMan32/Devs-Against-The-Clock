@@ -1,8 +1,29 @@
+/* Devs Against The Clock StyleSheet */
+:root {
+  --background1: #6b6b6b44;
+  --background2: #dedede44;
+  --screen-color: #848484;
+  --text-color: #000000;
+  --text-shadow: #ffffff;
+  --button-color: #424242;
+  --button-color-hover: #535353;
+  --button-color-focus: #323232;
+  --button-shadow: #212121;
+}
+
+/* ---- GENERAL SELECTORS ---- */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto Slab', serif;
 }
+body {
+  background-color: var(--background2);
+  background: repeating-linear-gradient( -45deg, var(--background1), var(--background1) 9.5px, var(--background2) 9.5px, var(--background2) 47.5px );
+}
+a { color: var(--text-color); }
 
 #screen {
   display: flex;
@@ -12,10 +33,47 @@
 }
 
 #clock-ui { flex: 1; }
+
 #questions-ui {
-  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 5;
   width: 80%;
-  background-color: #ccc;
-  box-shadow: 2px 2px #000;
+  background-color: var(--screen-color);
+  box-shadow: 4px 4px var(--text-color);
+  text-align: center;
 }
+  /* ---- Main Menu ---- */
+.title {
+  font-size: 40px;
+  text-shadow: 0 0 4px var(--text-shadow);
+}
+.credits {
+  opacity: .75;
+}
+.buttons-row {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-basis: 150px;
+}
+.button-menu {
+  width: 150px;
+  height: 100%;
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 30px;
+  border-bottom: 6px solid var(--button-shadow);
+}
+.button-menu:hover {
+  cursor: pointer;
+  background-color: var(--button-color-hover);
+}
+.button-menu:active {
+  border: none;
+  background-color: var(--button-color-focus);
+}
+
 #footer-ui { flex: 1; }
