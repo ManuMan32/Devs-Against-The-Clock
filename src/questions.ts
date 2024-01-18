@@ -10,7 +10,6 @@ const questions: Question[] = [];
 function createQuestion(statement: string, answer: string, options: string[]): Question {
   return { id: (questions.length + 1), statement, answer, options }
 }
-let lang: 0 | 1 = 0;
 
 // 1
 questions.push(createQuestion (

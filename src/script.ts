@@ -1,6 +1,7 @@
 // General Script of Devs Against The Clock
 // ---- Variables ----
 const questionsUI: HTMLElement | null = document.getElementById("questions-ui");
+let lang: 0 | 1 = 0;
 
 // ---- Button Listeners ----
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
@@ -12,10 +13,17 @@ function clearQuestionScreen(): void {
   const screenElements: NodeListOf<ChildNode> | undefined = questionsUI?.childNodes;
   screenElements?.forEach(() => screenElements[0]?.remove());
 
-  setTimeout(() => createQuestionScreen(3), 1000);
+  setTimeout(() => createQuestionScreen(Math.floor(Math.random() * (questions.length+1))), 1000);
 }
 
 // ---- Functions ----
+
+function buildElement(type: string, eClass: string, eText: string): HTMLElement {
+  const e: HTMLElement = document.createElement(type);
+  e.classList.add(eClass);
+  e.innerText = eText;
+  return e;
+}
 
 function createQuestionScreen(id: number): void {
   // Gets the text
@@ -24,11 +32,8 @@ function createQuestionScreen(id: number): void {
   const questionOptions: string[] = questions[id].options;
 
   // Creates the principal elements
-  const elQuestionTitle: HTMLElement = document.createElement("span");
-  elQuestionTitle.classList.add("title");
-  elQuestionTitle.innerText = questionTitle;
-  const elQuestionButtons: HTMLElement = document.createElement("div");
-  elQuestionButtons.classList.add("buttons-row");
+  const elQuestionTitle: HTMLElement = buildElement("span", "title", questionTitle);
+  const elQuestionButtons: HTMLElement = buildElement("div", "buttons-row", "");
 
   // Creates the option buttons
   const buttons: HTMLElement[] = [];
@@ -40,6 +45,10 @@ function createQuestionScreen(id: number): void {
     button.classList.add("button-option");
     button.innerText = (i == rightAnswer) ? questionAnswer : questionOptions[i - rightAlready];
     if (button.innerText == questionAnswer) rightAlready = 1;
+    button.addEventListener("click", function() {
+      const response: boolean = checkAnswer(this, id);
+      requestAnswer(response);
+    } );
     buttons.push(button);
   }
 
@@ -49,4 +58,19 @@ function createQuestionScreen(id: number): void {
   // Appends the principal elements
   questionsUI?.appendChild(elQuestionTitle);
   questionsUI?.appendChild(elQuestionButtons);
+}
+
+function checkAnswer(button: HTMLElement, id: number): boolean {
+  const userAnswer: string = button.innerText;
+  return userAnswer == questions[id].answer;
+}
+
+function requestAnswer(value: boolean): void {
+  const answerContainer: HTMLElement = buildElement("div", "answer-container", "");
+  const answer: HTMLElement = buildElement("div", "answer", "");
+  const answerSpan: HTMLElement = buildElement("span", "answer-span", (value) ? "Correct!" : "Incorrect!");
+  answer.classList.add((value) ? "ans-correct" : "ans-incorrect");
+  answer.appendChild(answerSpan);
+  answerContainer.appendChild(answer);
+  questionsUI?.appendChild(answerContainer);
 }
