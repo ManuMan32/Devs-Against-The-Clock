@@ -2,6 +2,8 @@
 // ---- Variables ----
 const questionsUI: HTMLElement | null = document.getElementById("questions-ui");
 let lang: 0 | 1 = 0;
+let correctLang: string = "Correct!";
+let incorrectLang: string = "Incorrect!";
 
 // ---- Button Listeners ----
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
@@ -16,7 +18,8 @@ function clearQuestionScreen(): void {
   setTimeout(() => createQuestionScreen(Math.floor(Math.random() * (questions.length+1))), 1000);
 }
 
-// ---- Functions ----
+// ---- FUNCTIONS ----
+// ---- Question Functions ----
 
 function buildElement(type: string, eClass: string, eText: string): HTMLElement {
   const e: HTMLElement = document.createElement(type);
@@ -68,9 +71,16 @@ function checkAnswer(button: HTMLElement, id: number): boolean {
 function requestAnswer(value: boolean): void {
   const answerContainer: HTMLElement = buildElement("div", "answer-container", "");
   const answer: HTMLElement = buildElement("div", "answer", "");
-  const answerSpan: HTMLElement = buildElement("span", "answer-span", (value) ? "Correct!" : "Incorrect!");
+  const answerSpan: HTMLElement = buildElement("span", "answer-span", (value) ? correctLang : incorrectLang);
   answer.classList.add((value) ? "ans-correct" : "ans-incorrect");
   answer.appendChild(answerSpan);
   answerContainer.appendChild(answer);
   questionsUI?.appendChild(answerContainer);
+}
+
+// ---- General Functions ----
+function changeLanguage(value: 0 | 1): void {
+  lang = value;
+  correctLang = (lang == 0) ? "Correct!" : "Correcto!";
+  incorrectLang = (lang == 0) ? "Incorrect!" : "Incorrecto!";
 }
