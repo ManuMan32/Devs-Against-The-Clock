@@ -8,9 +8,15 @@ type Question = {
 }
 const questions: Question[] = [];
 function createQuestion(statement: string, answer: string, options: string[]): Question {
-  return { id: (questions.length + 1), statement, answer, options }
+  return { id: questions.length, statement, answer, options }
 }
 
+// 0
+questions.push(createQuestion (
+  (lang == 0) ? "CSS was invented before JavaScript" : "CSS fue inventado antes que JavaScript",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
 // 1
 questions.push(createQuestion (
   (lang == 0) ? "Which of these technologies is NOT a framework?" : "¿Cuál de estas tecnologías NO ES un framework?",
@@ -56,8 +62,8 @@ questions.push(createQuestion (
 // 8
 questions.push(createQuestion (
   (lang == 0) ? "In JavaScript, there are reserved words that you cannot use as variable names." : "En JavaScript, hay palabras reservadas que no puedes usar como nombres de variables.",
-  (lang == 0) ? "Only in strict mode" : "Solo en el modo estricto",
-  (lang == 0) ? ["True","False"] : ["Verdadero","Falso"]
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
 ));
 // 9
 questions.push(createQuestion (

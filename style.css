@@ -47,7 +47,7 @@ a { color: var(--text-color); }
   justify-content: space-evenly;
   align-items: center;
   flex: 5;
-  width: 80%;
+  width: 70%;
   background-color: var(--screen-color);
   box-shadow: 4px 4px var(--text-color);
   text-align: center;
@@ -74,6 +74,7 @@ a { color: var(--text-color); }
   align-items: center;
   width: 100%;
   flex-basis: 150px;
+  transition: opacity .5s;
 }
 button[type="button"] {
   display: flex;

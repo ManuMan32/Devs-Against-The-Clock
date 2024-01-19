@@ -4,19 +4,14 @@ const questionsUI: HTMLElement | null = document.getElementById("questions-ui");
 let lang: 0 | 1 = 0;
 let correctLang: string = "Correct!";
 let incorrectLang: string = "Incorrect!";
+const recentQuestionsQueue: number[] = [];
 
 // ---- Button Listeners ----
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
 buttonPlay?.addEventListener("click", (): void => {
   clearQuestionScreen();
+  setTimeout(() => createQuestionScreen(Math.floor(Math.random() * (questions.length))), 1000);
 });
-
-function clearQuestionScreen(): void {
-  const screenElements: NodeListOf<ChildNode> | undefined = questionsUI?.childNodes;
-  for (let i in screenElements) screenElements[0]?.remove();
-
-  setTimeout(() => createQuestionScreen(Math.floor(Math.random() * (questions.length+1))), 1000);
-}
 
 // ---- FUNCTIONS ----
 // ---- Question Functions ----
@@ -28,15 +23,37 @@ function buildElement(type: string, eClass: string, eText: string): HTMLElement 
   return e;
 }
 
+function clearQuestionScreen(): void {
+  const screenElements: HTMLCollection | undefined = questionsUI?.children;
+  let j: number = 0;
+  for (let i in screenElements) {
+    if (screenElements[j]) {
+      (screenElements[j].classList.contains("answer-container")) ? (void 0, j++) :
+      (screenElements[j].classList.contains("title")) ? (void 0, j++) :
+      (screenElements[j].classList.contains("buttons-row")) ? (
+        screenElements[j].childNodes.forEach(e => e.remove())
+      ) :
+       screenElements[j].remove();
+    }
+  }
+}
+
+function clearQuestionAnimation(): void {
+  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
+  (buttonsRow) ? buttonsRow.style.opacity = "0" : void 0;
+  const title: HTMLElement | null = document.querySelector(".title");
+  (title) ? title.innerText = "" : void 0;
+}
+
 function createQuestionScreen(id: number): void {
   // Gets the text
-  const questionTitle: string = questions[id].statement;
+  const questionTitle: HTMLElement | null = document.querySelector(".title");
   const questionAnswer: string = questions[id].answer;
   const questionOptions: string[] = questions[id].options;
 
   // Creates the principal elements
-  const elQuestionTitle: HTMLElement = buildElement("span", "title", questionTitle);
-  const elQuestionButtons: HTMLElement = buildElement("div", "buttons-row", "");
+  (questionTitle) ? questionTitle.innerText = questions[id].statement : void 0;
+  const questionButtons: HTMLElement | null = document.querySelector(".buttons-row");
 
   // Creates the option buttons
   const buttons: HTMLElement[] = [];
@@ -56,11 +73,12 @@ function createQuestionScreen(id: number): void {
   }
 
   // Appends the option buttons
-  buttons.forEach(el => elQuestionButtons.appendChild(el) );
-
-  // Appends the principal elements
-  questionsUI?.appendChild(elQuestionTitle);
-  questionsUI?.appendChild(elQuestionButtons);
+  if (questionButtons) {
+    buttons.forEach(el => questionButtons.appendChild(el) );
+    questionButtons.style.opacity = "1";
+  }
+  recentQuestionsQueue.push(id);
+  if (recentQuestionsQueue.length > 10) recentQuestionsQueue.shift();
 }
 
 function checkAnswer(button: HTMLElement, id: number): boolean {
@@ -76,6 +94,21 @@ function requestAnswer(value: boolean): void {
   answer.appendChild(answerSpan);
   answerContainer.appendChild(answer);
   questionsUI?.appendChild(answerContainer);
+  nextQuestion();
+  setTimeout(() => answerContainer.remove(), 2000);
+}
+
+function nextQuestion(): void {
+  clearQuestionAnimation();
+  setTimeout(() => clearQuestionScreen(), 1000);
+  let newId = Math.floor(Math.random() * questions.length)
+  while (true) {
+    if (recentQuestionsQueue.includes(newId)) newId = Math.floor(Math.random() * questions.length);
+    else {
+      setTimeout(() => createQuestionScreen(newId), 2000);
+      break;
+    }
+  }
 }
 
 // ---- General Functions ----
