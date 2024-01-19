@@ -13,7 +13,7 @@ buttonPlay?.addEventListener("click", (): void => {
 
 function clearQuestionScreen(): void {
   const screenElements: NodeListOf<ChildNode> | undefined = questionsUI?.childNodes;
-  screenElements?.forEach(() => screenElements[0]?.remove());
+  for (let i in screenElements) screenElements[0]?.remove();
 
   setTimeout(() => createQuestionScreen(Math.floor(Math.random() * (questions.length+1))), 1000);
 }
