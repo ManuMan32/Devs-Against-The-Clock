@@ -9,8 +9,12 @@ const recentQuestionsQueue: number[] = [];
 // ---- Button Listeners ----
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
 buttonPlay?.addEventListener("click", (): void => {
-  clearQuestionScreen();
-  setTimeout(() => createQuestionScreen(Math.floor(Math.random() * (questions.length))), 1000);
+  const logo: HTMLElement | null = document.getElementById("logo");
+  if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
+  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
+  if (buttonsRow) { buttonsRow.style.opacity = "0"; }
+  setTimeout(() => clearQuestionScreen(), 1250);
+  setTimeout(() => createQuestionScreen(Math.floor(Math.random() * (questions.length))), 1500);
 });
 
 // ---- FUNCTIONS ----
