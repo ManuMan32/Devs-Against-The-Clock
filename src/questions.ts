@@ -107,3 +107,105 @@ questions.push(createQuestion (
   "false",
   ["-4","TypeError","24"]
 ));
+// 16
+questions.push(createQuestion (
+  (lang == 0) ? "In HTML, do description lists exist?" : "En HTML ¿Existen las description lists?",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 17
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log(2 == '2')' what will the console show me?" : "Si ejecuto 'console.log(2 == '2')' ¿Qué me mostrará la consola?",
+  "true",
+  ["false","NaN"]
+));
+// 18
+questions.push(createQuestion (
+  (lang == 0) ? '"~" is used in CSS to select a...' : '"~" es usado en CSS para seleccionar un...',
+  "sibling",
+  ["parent","child"]
+));
+// 19
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log(parseInt('25.5'))' what will the console show me?" : "Si ejecuto 'console.log(parseInt('25.5'))' ¿Qué me mostrará la consola?",
+  "25",
+  ["25.5","5","0.5"]
+));
+// 20
+questions.push(createQuestion (
+  (lang == 0) ? "What method adds an element to the beginning of an array?" : "¿Qué método agrega un elemento al principio de un array?",
+  "unshift",
+  ["pop","shift","push"]
+));
+// 21
+questions.push(createQuestion (
+  (lang == 0) ? "With what attribute is a label connected to an input?" : "¿Con qué atributo se conecta un label a un input?",
+  "for and name",
+  ["name and value","for and id","id and value"]
+));
+// 22
+questions.push(createQuestion (
+  (lang == 0) ? "What method makes an object readonly?" : "¿Qué método hace que un objeto sea readonly?",
+  "freeze",
+  ["constant","static","setReadOnly"]
+));
+// 23
+questions.push(createQuestion (
+  (lang == 0) ? "'position: absolute' fixes an element to a specific location on the website." : "'position: absolute' fija un elemento en un lugar específico de la web.",
+  (lang == 0) ? "False" : "False",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 24
+questions.push(createQuestion (
+  (lang == 0) ? "The ::after and ::before pseudo-elements are part of the DOM." : "Los pseudoelementos ::after y ::before forman parte del DOM.",
+  (lang == 0) ? "False" : "False",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 25
+questions.push(createQuestion (
+  (lang == 0) ? "H1 elements in HTML have a default 'margin'." : "Los elementos h1 en HTML tienen un 'margin' predeterminado.",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 26
+questions.push(createQuestion (
+  (lang == 0) ? "Which 'display' has a <span> element by default?" : "¿Qué 'display' tiene por defecto un elemento <span>?",
+  "inline",
+  ["block","inline-block","flex"]
+));
+// 27
+questions.push(createQuestion (
+  (lang == 0) ? "Does HTML support animated GIFs within an <img> element?" : "¿HTML soporta GIFs animados dentro de un elemento <img>?",
+  (lang == 0) ? "Yes" : "Si",
+  ["No"]
+));
+// 28
+questions.push(createQuestion (
+  (lang == 0) ? "In CSS, ':' is pseudoclass and '::' is pseudoelement." : "En CSS, ':' indica una pseudoclase y '::' indica un pseudoelemento.",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 29
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these has more specificity in CSS?" : "¿Cuál de estos tiene más especificidad en CSS?",
+  "ID",
+  ["classes","pseudoelements","elements"]
+));
+// 30
+questions.push(createQuestion (
+  (lang == 0) ? "With what prefix are variables declared in CSS?" : "¿Con qué prefix se declaran variables en CSS?",
+  "--",
+  ["-","let","var"]
+));
+// 31
+questions.push(createQuestion (
+  (lang == 0) ? "What type of data is an 'array' in JavaScript?" : "¿Qué tipo de dato es un 'array' en JavaScript?",
+  "object",
+  ["symbol","array","date"]
+));
+// 32
+questions.push(createQuestion (
+  (lang == 0) ? "With which operator is the power of a number calculated in JavaScript?" : "¿Con qué operador se calcula la potencia de un número en JavaScript?",
+  "**",
+  ["^","!","²"]
+));
