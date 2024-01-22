@@ -16,11 +16,20 @@
     <main id="screen">
       <header id="clock-ui"></header>
       <section id="questions-ui">
-        <h1 class="title">Devs Against The Clock</h1>
+        <div class="title">
+          <h1 class="screen-reader">Devs Against The Clock</h1>
+          <img src="logo.png" alt="Devs Against The Clock Logo">
+        </div>
         <div class="buttons-row">
-          <button type="button" class="button-menu" id="button-questions"></button>
-          <button type="button" class="button-menu" id="button-play"></button>
-          <button type="button" class="button-menu" id="button-options"></button>
+          <button type="button" class="button-menu" id="button-questions">
+            <img class="button-icon" src="icons/questions.svg" alt="Questions">
+          </button>
+          <button type="button" class="button-menu" id="button-play">
+            <img class="button-icon" src="icons/play.svg" alt="Play">
+          </button>
+          <button type="button" class="button-menu" id="button-options">
+            <img class="button-icon" src="icons/settings.svg" alt="Settings">
+          </button>
         </div>
         <span class="credits">Page made by <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a></span>
       </section>

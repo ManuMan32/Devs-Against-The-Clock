@@ -30,6 +30,7 @@ body {
   background: repeating-linear-gradient( -45deg, var(--background1), var(--background1) 9.5px, var(--background2) 9.5px, var(--background2) 47.5px );
 }
 a { color: var(--text-color); }
+img { user-select: none; }
 
 #screen {
   display: flex;
@@ -172,3 +173,14 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 }
 
 #footer-ui { flex: 1; }
+
+  /* ---- Miscellaneous classes ---- */
+.screen-reader {
+  text-indent: -9999px;
+}
+.button-icon {
+  width: 90%;
+  height: 90%;
+  filter: invert(80%);
+  opacity: .6;
+}
