@@ -30,7 +30,7 @@ body {
   background: repeating-linear-gradient( -45deg, var(--background1), var(--background1) 9.5px, var(--background2) 9.5px, var(--background2) 47.5px );
 }
 a { color: var(--text-color); }
-img { user-select: none; }
+img { user-select: none; -webkit-user-drag: none; }
 
 #screen {
   display: flex;
