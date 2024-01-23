@@ -7,15 +7,9 @@ let incorrectLang: string = "Incorrect!";
 const recentQuestionsQueue: number[] = [];
 
 // ---- Button Listeners ----
+
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
-buttonPlay?.addEventListener("click", (): void => {
-  const logo: HTMLElement | null = document.getElementById("logo");
-  if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
-  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
-  if (buttonsRow) { buttonsRow.style.opacity = "0"; }
-  setTimeout(() => clearQuestionScreen(), 1250);
-  setTimeout(() => createQuestionScreen(Math.floor(Math.random() * (questions.length))), 1500);
-});
+buttonPlay?.addEventListener("click", clearTitleScreen);
 
 // ---- FUNCTIONS ----
 // ---- Question Functions ----
@@ -25,6 +19,18 @@ function buildElement(type: string, eClass: string, eText: string): HTMLElement 
   e.classList.add(eClass);
   e.innerText = eText;
   return e;
+}
+
+function clearTitleScreen(): void {
+  const logo: HTMLElement | null = document.getElementById("logo");
+  if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
+  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
+  if (buttonsRow) { buttonsRow.style.opacity = "0"; }
+  setTimeout(() => clearQuestionScreen(), 1250);
+  setTimeout(() => {
+    createQuestionScreen(Math.floor(Math.random() * (questions.length)));
+    createTimerInterval();
+  }, 1500);
 }
 
 function clearQuestionScreen(): void {
@@ -98,6 +104,7 @@ function requestAnswer(value: boolean): void {
   answer.appendChild(answerSpan);
   answerContainer.appendChild(answer);
   questionsUI?.appendChild(answerContainer);
+  (value) ? modifyTime(5, "add") : modifyTime(4, "subtract");
   nextQuestion();
   setTimeout(() => answerContainer.remove(), 2000);
 }
