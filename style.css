@@ -100,6 +100,14 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   font-size: 25px;
   margin: 0 20px;
 }
+.button-difficulty-easy { background-color: #006c00 !important; border-color: #002200 !important; }
+.button-difficulty-easy:hover { background-color: #007700 !important; }
+.button-difficulty-normal { background-color: #6c6c00 !important; border-color: #222200 !important; }
+.button-difficulty-normal:hover { background-color: #777700 !important; }
+.button-difficulty-hard { background-color: #6c0000 !important; border-color: #220000 !important; }
+.button-difficulty-hard:hover { background-color: #770000 !important; }
+.button-difficulty-expert { background-color: #6c0055 !important; border-color: #220011 !important; }
+.button-difficulty-expert:hover { background-color: #770066 !important; }
           /* ---- Animation ---- */
 @keyframes disappearLogo {
   0% {

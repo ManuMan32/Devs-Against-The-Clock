@@ -1,15 +1,20 @@
 // General Script of Devs Against The Clock
 // ---- Variables ----
 const questionsUI: HTMLElement | null = document.getElementById("questions-ui");
+enum MenuScreens {
+  Title,
+  Difficulties,
+  Question
+}
 let lang: 0 | 1 = 0;
 let correctLang: string = "Correct!";
 let incorrectLang: string = "Incorrect!";
 const recentQuestionsQueue: number[] = [];
 enum Difficulty {
-  Easy,
-  Normal,
-  Hard,
-  Expert
+  Easy = "easy",
+  Normal = "normal",
+  Hard = "hard",
+  Expert = "expert"
 }
 let incrementTime = 7;
 let decrementTime = 3;
@@ -17,7 +22,7 @@ let decrementTime = 3;
 // ---- Button Listeners ----
 
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
-buttonPlay?.addEventListener("click", clearTitleScreen);
+buttonPlay?.addEventListener("click", () => clearScreen(MenuScreens.Title));
 
 // ---- FUNCTIONS ----
 // ---- Question Functions ----
@@ -29,17 +34,21 @@ function buildElement(type: string, eClass: string, eText: string): HTMLElement 
   return e;
 }
 
-function clearTitleScreen(): void {
-  const logo: HTMLElement | null = document.getElementById("logo");
-  if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
-  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
-  if (buttonsRow) { buttonsRow.style.opacity = "0"; }
-  setTimeout(() => clearQuestionScreen(), 1250);
-  setTimeout(() => {
-    createQuestionScreen(Math.floor(Math.random() * (questions.length)));
-    createTimerInterval();
-    if (clock) clock.style.opacity = "1";
-  }, 1500);
+function clearScreen(type: MenuScreens): void {
+  switch (type) {
+    //Clears the Title screen and creates the Difficulties screen
+    case MenuScreens.Title:
+      const logo: HTMLElement | null = document.getElementById("logo");
+      if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
+      const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
+      if (buttonsRow) { buttonsRow.style.opacity = "0"; }
+      setTimeout(() => clearQuestionScreen(), 1250);
+      setTimeout(() => {
+        createDifficultiesScreen();
+      }, 1500);
+      break;
+
+  }
 }
 
 function clearQuestionScreen(): void {
@@ -64,6 +73,22 @@ function clearQuestionAnimation(): void {
   (title) ? title.innerText = "" : void 0;
 }
 
+function createDifficultiesScreen(): void {
+  const questionTitle: HTMLElement | null = document.querySelector(".title");
+  if (questionTitle) questionTitle.innerText = (lang == 0) ? "Select the difficulty" : "Selecciona la dificultad";
+  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
+  const difficultiesArr = (lang == 0) ? ["Easy", "Normal", "Hard", "Expert"] : ["Fácil", "Normal", "Dificil", "Experto"];
+  const difficultiesEnum = [Difficulty.Easy, Difficulty.Normal, Difficulty.Hard, Difficulty.Expert];
+  difficultiesArr.forEach((text, index) => {
+    const difficultyButton: HTMLButtonElement = document.createElement("button");
+    difficultyButton.type = "button";
+    difficultyButton.classList.add("button-option");
+    difficultyButton.classList.add("button-difficulty-"+difficultiesEnum[index]);
+    difficultyButton.innerHTML = text;
+    buttonsRow?.appendChild(difficultyButton);
+  })
+  if (buttonsRow) buttonsRow.style.opacity = "1";
+}
 function createQuestionScreen(id: number): void {
   // Gets the text
   const questionTitle: HTMLElement | null = document.querySelector(".title");
