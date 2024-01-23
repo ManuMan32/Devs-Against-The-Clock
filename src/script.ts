@@ -5,6 +5,14 @@ let lang: 0 | 1 = 0;
 let correctLang: string = "Correct!";
 let incorrectLang: string = "Incorrect!";
 const recentQuestionsQueue: number[] = [];
+enum Difficulty {
+  Easy,
+  Normal,
+  Hard,
+  Expert
+}
+let incrementTime = 7;
+let decrementTime = 3;
 
 // ---- Button Listeners ----
 
@@ -104,7 +112,7 @@ function requestAnswer(value: boolean): void {
   answer.appendChild(answerSpan);
   answerContainer.appendChild(answer);
   questionsUI?.appendChild(answerContainer);
-  (value) ? modifyTime(5, "add") : modifyTime(4, "subtract");
+  (value) ? modifyTime(incrementTime, "add") : modifyTime(decrementTime, "subtract");
   nextQuestion();
   setTimeout(() => answerContainer.remove(), 2000);
 }
@@ -123,8 +131,27 @@ function nextQuestion(): void {
 }
 
 // ---- General Functions ----
+
 function changeLanguage(value: 0 | 1): void {
   lang = value;
   correctLang = (lang == 0) ? "Correct!" : "Correcto!";
   incorrectLang = (lang == 0) ? "Incorrect!" : "Incorrecto!";
+}
+
+function changeDifficulty(index: Difficulty) {
+  switch (index) {
+    case Difficulty.Easy:
+    default:
+      incrementTime = 7; decrementTime = 3;
+      break;
+    case Difficulty.Normal:
+      incrementTime = 6; decrementTime = 4;
+      break;
+    case Difficulty.Hard:
+      incrementTime = 5; decrementTime = 5;
+      break
+    case Difficulty.Expert:
+      incrementTime = 4; decrementTime = 6;
+      break;
+  }
 }
