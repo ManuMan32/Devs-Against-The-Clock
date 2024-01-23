@@ -1,4 +1,4 @@
-//Questions of Devs Against The Clock
+// Questions of Devs Against The Clock
 
 type Question = {
   readonly id: number
