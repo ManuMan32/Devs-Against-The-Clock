@@ -38,6 +38,7 @@ function clearTitleScreen(): void {
   setTimeout(() => {
     createQuestionScreen(Math.floor(Math.random() * (questions.length)));
     createTimerInterval();
+    if (clock) clock.style.opacity = "1";
   }, 1500);
 }
 
@@ -155,3 +156,4 @@ function changeDifficulty(index: Difficulty) {
       break;
   }
 }
+changeDifficulty(Difficulty.Normal);
