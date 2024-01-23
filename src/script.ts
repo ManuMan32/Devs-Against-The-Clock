@@ -6,6 +6,7 @@ enum MenuScreens {
   Difficulties,
   Question
 }
+let actualScreen: MenuScreens = MenuScreens.Title;
 let lang: 0 | 1 = 0;
 let correctLang: string = "Correct!";
 let incorrectLang: string = "Incorrect!";
@@ -22,7 +23,7 @@ let decrementTime = 3;
 // ---- Button Listeners ----
 
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
-buttonPlay?.addEventListener("click", () => clearScreen(MenuScreens.Title));
+buttonPlay?.addEventListener("click", () => clearScreen(1250, createDifficultiesScreen, MenuScreens.Difficulties));
 
 // ---- FUNCTIONS ----
 // ---- Question Functions ----
@@ -34,24 +35,18 @@ function buildElement(type: string, eClass: string, eText: string): HTMLElement 
   return e;
 }
 
-function clearScreen(type: MenuScreens): void {
-  switch (type) {
-    //Clears the Title screen and creates the Difficulties screen
-    case MenuScreens.Title:
-      const logo: HTMLElement | null = document.getElementById("logo");
-      if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
-      const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
-      if (buttonsRow) { buttonsRow.style.opacity = "0"; }
-      setTimeout(() => clearQuestionScreen(), 1250);
-      setTimeout(() => {
-        createDifficultiesScreen();
-      }, 1500);
-      break;
-
+    // ---- CLEAR SCREEN FUNCTIONS ----
+function clearScreen(timeout: number = 1250, nextScreenFunction: VoidFunction | undefined = undefined, nextScreenType: MenuScreens | undefined = undefined): void {
+  // Clears the Screen
+  clearAnimation(actualScreen == MenuScreens.Title);
+  // Then creates a new one
+  setTimeout(() => clearQuestion(), timeout);
+  if (nextScreenFunction && nextScreenType) {
+    actualScreen = nextScreenType;
+    setTimeout(() => { nextScreenFunction(); }, timeout + 250);
   }
 }
-
-function clearQuestionScreen(): void {
+function clearQuestion(): void {
   const screenElements: HTMLCollection | undefined = questionsUI?.children;
   let j: number = 0;
   for (let i in screenElements) {
@@ -65,14 +60,19 @@ function clearQuestionScreen(): void {
     }
   }
 }
-
-function clearQuestionAnimation(): void {
+function clearAnimation(isTitle: boolean = false): void {
   const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
   (buttonsRow) ? buttonsRow.style.opacity = "0" : void 0;
-  const title: HTMLElement | null = document.querySelector(".title");
-  (title) ? title.innerText = "" : void 0;
+  if (isTitle) {
+    const logo: HTMLElement | null = document.getElementById("logo");
+    if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
+  } else {
+    const title: HTMLElement | null = document.querySelector(".title");
+    (title) ? title.innerText = "" : void 0;
+  }
 }
 
+    // ---- CREATE SCREEN FUNCTIONS
 function createDifficultiesScreen(): void {
   const questionTitle: HTMLElement | null = document.querySelector(".title");
   if (questionTitle) questionTitle.innerText = (lang == 0) ? "Select the difficulty" : "Selecciona la dificultad";
@@ -85,6 +85,13 @@ function createDifficultiesScreen(): void {
     difficultyButton.classList.add("button-option");
     difficultyButton.classList.add("button-difficulty-"+difficultiesEnum[index]);
     difficultyButton.innerHTML = text;
+    difficultyButton.addEventListener("click", () => {
+      changeDifficulty(difficultiesEnum[index]);
+      clearScreen(1250, () => {
+        createQuestionScreen(4);
+        createTimerInterval();
+      }, MenuScreens.Question);
+    })
     buttonsRow?.appendChild(difficultyButton);
   })
   if (buttonsRow) buttonsRow.style.opacity = "1";
@@ -144,8 +151,7 @@ function requestAnswer(value: boolean): void {
 }
 
 function nextQuestion(): void {
-  clearQuestionAnimation();
-  setTimeout(() => clearQuestionScreen(), 1000);
+  clearScreen(1000);
   let newId = Math.floor(Math.random() * questions.length)
   while (true) {
     if (recentQuestionsQueue.includes(newId)) newId = Math.floor(Math.random() * questions.length);

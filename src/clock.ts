@@ -12,7 +12,10 @@ let timer: number;
 function createTimerInterval(stop = false) {
   updateClock();
   if (stop) clearInterval(timer);
-  else timer = setInterval(timerFunction, 100);
+  else {
+    timer = setInterval(timerFunction, 100)
+    if (clock) clock.style.opacity = "1";
+  };
 }
 function timerFunction() {
   time -= 0.1;
