@@ -108,6 +108,13 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 .button-difficulty-hard:hover { background-color: #770000 !important; }
 .button-difficulty-expert { background-color: #6c0055 !important; border-color: #220011 !important; }
 .button-difficulty-expert:hover { background-color: #770066 !important; }
+
+.button-blocked {
+  cursor: default !important;
+  border: none !important;
+  background-color: var(--button-color-focus) !important;
+  user-select: none !important;
+}
           /* ---- Animation ---- */
 @keyframes disappearLogo {
   0% {

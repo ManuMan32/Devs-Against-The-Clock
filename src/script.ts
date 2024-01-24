@@ -23,7 +23,9 @@ let decrementTime = 3;
 // ---- Button Listeners ----
 
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
-buttonPlay?.addEventListener("click", () => clearScreen(1250, createDifficultiesScreen, MenuScreens.Difficulties));
+buttonPlay?.addEventListener("click", function() {
+  if (!this.classList.contains("button-blocked")) clearScreen(1250, createDifficultiesScreen, MenuScreens.Difficulties);
+});
 
 // ---- FUNCTIONS ----
 // ---- Question Functions ----
@@ -62,7 +64,13 @@ function clearQuestion(): void {
 }
 function clearAnimation(isTitle: boolean = false): void {
   const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
-  (buttonsRow) ? buttonsRow.style.opacity = "0" : void 0;
+  if (buttonsRow) {
+    buttonsRow.style.opacity = "0";
+    const buttons = buttonsRow.children;
+    for (let i in buttons) {
+      if (typeof buttons[i] == "object") buttons[i].classList.add("button-blocked");
+    }
+  }
   if (isTitle) {
     const logo: HTMLElement | null = document.getElementById("logo");
     if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
@@ -85,12 +93,14 @@ function createDifficultiesScreen(): void {
     difficultyButton.classList.add("button-option");
     difficultyButton.classList.add("button-difficulty-"+difficultiesEnum[index]);
     difficultyButton.innerHTML = text;
-    difficultyButton.addEventListener("click", () => {
-      changeDifficulty(difficultiesEnum[index]);
-      clearScreen(1250, () => {
-        createQuestionScreen(4);
-        createTimerInterval();
-      }, MenuScreens.Question);
+    difficultyButton.addEventListener("click", function() {
+      if (!this.classList.contains("button-blocked")) {
+        changeDifficulty(difficultiesEnum[index]);
+        clearScreen(1250, () => {
+          createQuestionScreen(4);
+          createTimerInterval();
+        }, MenuScreens.Question);
+      }
     })
     buttonsRow?.appendChild(difficultyButton);
   })
@@ -117,8 +127,10 @@ function createQuestionScreen(id: number): void {
     button.innerText = (i == rightAnswer) ? questionAnswer : questionOptions[i - rightAlready];
     if (button.innerText == questionAnswer) rightAlready = 1;
     button.addEventListener("click", function() {
-      const response: boolean = checkAnswer(this, id);
-      requestAnswer(response);
+      if (!this.classList.contains("button-blocked")) {
+        const response: boolean = checkAnswer(this, id);
+        requestAnswer(response);
+      }
     } );
     buttons.push(button);
   }
