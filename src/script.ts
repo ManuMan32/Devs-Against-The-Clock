@@ -97,7 +97,7 @@ function createDifficultiesScreen(): void {
       if (!this.classList.contains("button-blocked")) {
         changeDifficulty(difficultiesEnum[index]);
         clearScreen(1250, () => {
-          createQuestionScreen(4);
+          createQuestionScreen(Math.floor(Math.random() * questions.length));
           createTimerInterval();
         }, MenuScreens.Question);
       }
@@ -118,7 +118,7 @@ function createQuestionScreen(id: number): void {
 
   // Creates the option buttons
   const buttons: HTMLElement[] = [];
-  const rightAnswer: number = Math.floor(Math.random() * (questionOptions.length+1));
+  const rightAnswer: number = Math.floor(Math.random() * (questionOptions.length + 1));
   let rightAlready: 0 | 1 = 0;
   for (let i = 0; i < questionOptions.length + 1; i++) {
     const button: HTMLButtonElement = document.createElement("button");
@@ -141,7 +141,7 @@ function createQuestionScreen(id: number): void {
     questionButtons.style.opacity = "1";
   }
   recentQuestionsQueue.push(id);
-  if (recentQuestionsQueue.length > 10) recentQuestionsQueue.shift();
+  if (recentQuestionsQueue.length > 40) recentQuestionsQueue.shift();
 }
 
 function checkAnswer(button: HTMLElement, id: number): boolean {
@@ -158,6 +158,10 @@ function requestAnswer(value: boolean): void {
   answerContainer.appendChild(answer);
   questionsUI?.appendChild(answerContainer);
   (value) ? modifyTime(incrementTime, "add") : modifyTime(decrementTime, "subtract");
+  if (clockBar) {
+    clockBar.style.animation = ".8s ease-out forwards " + ((value) ? "co" : "inco") + "rrectBarPulse";
+    setTimeout(() => clockBar.style.animation = "none", 1500);
+  }
   nextQuestion();
   setTimeout(() => answerContainer.remove(), 2000);
 }

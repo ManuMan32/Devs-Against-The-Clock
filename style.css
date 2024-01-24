@@ -39,8 +39,6 @@ img { user-select: none; -webkit-user-drag: none; }
   height: 100vh;
 }
 
-#clock-ui { flex: 1; }
-
 #questions-ui {
   position: relative;
   display: flex;
@@ -200,6 +198,7 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 /* ---- Clock ---- */
 
 #clock-ui {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -214,8 +213,17 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   transition: opacity .5s;
 }
 .clock-bar {
+  --bar-color: #00b600;
   height: 100%;
-  background: #33dd33;
+  background-color: var(--bar-color);
+}
+@keyframes correctBarPulse {
+  0% { background-color: #00ff00; }
+  100% { background-color: var(--bar-color); }
+}
+@keyframes incorrectBarPulse {
+  0% { background-color: #ff0000; }
+  100% { background-color: var(--bar-color); }
 }
 
 #footer-ui { flex: 1; }
