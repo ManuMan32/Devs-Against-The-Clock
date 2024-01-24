@@ -209,3 +209,111 @@ questions.push(createQuestion (
   "**",
   ["^","!","²"]
 ));
+// 33
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these is NOT an input type?" : "¿Cuál de estos NO es un tipo de input?",
+  "select",
+  ["week","radio","password"]
+));
+// 34
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these HTML tags is standalone (open-only)?" : "¿Cuál de estas etiquetas HTML es de solo apertura?",
+  "<img>",
+  ["<html>","<textarea>","<button>"]
+));
+// 35
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these pseudoclasses indicate that a link has been visited?" : "¿Cuál de estas pseudoclases indican que un link ha sido visitado?",
+  ":visited",
+  [":focus",":anchor",":entered"]
+));
+// 36
+questions.push(createQuestion (
+  (lang == 0) ? "Bootstrap is a JavaScript framework" : "Bootstrap es un framework de JavaScript.",
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 37
+questions.push(createQuestion (
+  (lang == 0) ? "CSS is mainly used for backend." : "CSS se usa para el backend principalmente.",
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 38
+questions.push(createQuestion (
+  (lang == 0) ? "What was the first name that JavaScript had?" : "¿Cuál fue el primer nombre que tuvo JavaScript?",
+  "Mocha",
+  ["ECMAScript","LiveScript","Java"]
+));
+// 39
+questions.push(createQuestion (
+  (lang == 0) ? 'Which version of JavaScript introduced the "let" keyword?' : '¿Qué versión de JavaScript introdujo la palabra clave "let"?',
+  "ES06",
+  ["ECMAScript 2020","ES05","ECMAScript 2018"]
+));
+// 40
+questions.push(createQuestion (
+  (lang == 0) ? 'What "HTML" stands for?' : '¿Qué significa "HTML"?',
+  "HyperText Markup Language",
+  ["Hyper Tag Manipulation Language","HyperText Programming Language","Hyper Tag Markup Lector"]
+));
+// 41
+questions.push(createQuestion (
+  (lang == 0) ? "React is a JavaScript framework." : "React es un framework de JavaScript.",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 42
+questions.push(createQuestion (
+  (lang == 0) ? 'Which HTML tag creates vector graphics?' : '¿Qué etiqueta HTML crea gráficos vectoriales?',
+  "<svg>",
+  ["<canvas>","<vector>","<picture>"]
+));
+// 43
+questions.push(createQuestion (
+  (lang == 0) ? 'What prefix is used to create a CSS animation?' : '¿Con qué prefix se crea una animación en CSS?',
+  "@KeyFrames",
+  ["--animation","@Animation","--keyframe"]
+));
+// 44
+questions.push(createQuestion (
+  '<meta name="viewport" content="width=__________, initial-scale=1" />',
+  "device-width",
+  ["media","auto","screen"]
+));
+// 45
+questions.push(createQuestion (
+  (lang == 0) ? 'What is the name of the web icon that appears in the browser tab?' : '¿Cómo se llama el icono de la web que aparece en la pestaña del navegador?',
+  "favicon",
+  ["web icon","image","picture"]
+));
+// 46
+questions.push(createQuestion (
+  (lang == 0) ? "The text inside an HTML tag is a TextNode." : "El texto dentro de una etiqueta HTML es un TextNode.",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 47
+questions.push(createQuestion (
+  (lang == 0) ? "HTML is case sensitive." : "HTML es sensible a mayúsculas.",
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 48
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these HTML tags draws a horizontal dividing line?' : '¿Cuál de estas etiquetas HTML dibuja una linea horizontal divisora?',
+  "<hr>",
+  ["<br>","<hl>","<break>"]
+));
+// 49
+questions.push(createQuestion (
+  (lang == 0) ? 'How do you write comments in HTML?' : '¿Cómo se escriben comentarios en HTML?',
+  "<!-- -->",
+  ["<comment>","<-- -->","<// >"]
+));
+// 50
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these is a hexadecimal color?' : '¿Cuál de estos es un color hexadecimal?',
+  "#44a3cc",
+  ["red","hex(3, 7, 9)","rgb(2, 5, 6)"]
+));
