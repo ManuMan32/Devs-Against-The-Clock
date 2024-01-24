@@ -11,6 +11,7 @@ let lang: 0 | 1 = 0;
 let correctLang: string = "Correct!";
 let incorrectLang: string = "Incorrect!";
 const recentQuestionsQueue: number[] = [];
+let actualQuestion: number;
 enum Difficulty {
   Easy = "easy",
   Normal = "normal",
@@ -128,7 +129,9 @@ function createQuestionScreen(id: number): void {
     if (button.innerText == questionAnswer) rightAlready = 1;
     button.addEventListener("click", function() {
       if (!this.classList.contains("button-blocked")) {
+        actualQuestion = id;
         const response: boolean = checkAnswer(this, id);
+        this.classList.add((response) ? "button-blocked-correct" : "button-blocked-incorrect");
         requestAnswer(response);
       }
     } );
@@ -156,13 +159,27 @@ function requestAnswer(value: boolean): void {
   answer.classList.add((value) ? "ans-correct" : "ans-incorrect");
   answer.appendChild(answerSpan);
   answerContainer.appendChild(answer);
-  questionsUI?.appendChild(answerContainer);
   (value) ? modifyTime(incrementTime, "add") : modifyTime(decrementTime, "subtract");
   if (clockBar) {
     clockBar.style.animation = ".8s ease-out forwards " + ((value) ? "co" : "inco") + "rrectBarPulse";
     setTimeout(() => clockBar.style.animation = "none", 1500);
   }
   nextQuestion();
+  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
+  if (buttonsRow) {
+    setTimeout(() => buttonsRow.style.opacity = "1", 5);
+    setTimeout(() => buttonsRow.style.opacity = "0", 500);
+    if (!value) {
+      for (let i in buttonsRow.children) {
+        const element = buttonsRow.children[parseInt(i)];
+        if (typeof element == "object") {
+          if (element.innerHTML == questions[actualQuestion].answer) element.classList.add("button-blocked-correct");
+        }
+      }
+    }
+  }
+  const title = document.querySelector(".title");
+  title?.appendChild(answerContainer);
   setTimeout(() => answerContainer.remove(), 2000);
 }
 
@@ -172,7 +189,7 @@ function nextQuestion(): void {
   while (true) {
     if (recentQuestionsQueue.includes(newId)) newId = Math.floor(Math.random() * questions.length);
     else {
-      setTimeout(() => createQuestionScreen(newId), 2000);
+      setTimeout(() => createQuestionScreen(newId), 1250);
       break;
     }
   }

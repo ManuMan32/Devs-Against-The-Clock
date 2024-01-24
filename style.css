@@ -113,6 +113,12 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   background-color: var(--button-color-focus) !important;
   user-select: none !important;
 }
+.button-blocked-correct {
+  background-color: var(--correct-border) !important;
+}
+.button-blocked-incorrect {
+  background-color: var(--incorrect-color) !important;
+}
           /* ---- Animation ---- */
 @keyframes disappearLogo {
   0% {
@@ -125,9 +131,8 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 
 /* ---- Questions ---- */
 .answer-container {
-  position: absolute;
+  position: relative;
   width: 100%; height: 100%;
-  top: 0; left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,7 +151,7 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   z-index: 1000;
   overflow: hidden;
   user-select: none;
-  animation: 2s ease forwards showAnswer;
+  animation: 1.25s ease forwards showAnswer;
 }
 .ans-correct { 
   background-color: var(--correct-color);
