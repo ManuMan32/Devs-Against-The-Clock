@@ -1,4 +1,6 @@
-// Questions of Devs Against The Clock
+// DEVS AGAINST THE CLOCK
+// Script written by Manuel Crocco
+// Questions of game
 
 type Question = {
   readonly id: number

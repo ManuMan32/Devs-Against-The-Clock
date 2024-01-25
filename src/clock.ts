@@ -1,6 +1,8 @@
+// DEVS AGAINST THE CLOCK
+// Script written by Manuel Crocco
 // Script that controls the functionality of the clock
 
-  // Variables
+// Variables
 const clock: HTMLElement | null = document.querySelector(".clock");
 const clockBar: HTMLElement | null = document.querySelector(".clock-bar");
 let maxTime = 30;
@@ -8,7 +10,7 @@ let time = 30;
 let timerStarted = false;
 let timer: number;
 
-  // Functions
+// Functions
 function createTimerInterval(stop = false) {
   updateClock();
   if (stop) clearInterval(timer);
