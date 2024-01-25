@@ -131,12 +131,12 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 }
           /* ---- Animation ---- */
 @keyframes disappearLogo {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
+}
+@keyframes appearLogo {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
 }
 
 /* ---- Questions ---- */

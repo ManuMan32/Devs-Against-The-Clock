@@ -25,7 +25,7 @@ function createBackButton() {
 function backButtonAction(this: HTMLElement) {
   switch (actualScreen) {
     case MenuScreens.Difficulties:
-      clearScreen(1250, createTitleScreen, MenuScreens.Title);
+      clearScreen(800, createTitleScreen, MenuScreens.Title);
       break;
   }
   this.remove();

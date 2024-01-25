@@ -17,6 +17,7 @@ function createTitleScreen() {
   img.id = "logo";
   img.src = "logo.png";
   img.alt = "Devs Against The Clock Logo";
+  img.style.animation = "1s ease forwards appearLogo";
   const title = document.querySelector(".title");
   if (title) {
     title.appendChild(h1);
