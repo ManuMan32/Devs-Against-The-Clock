@@ -2,10 +2,11 @@
 // ---- Variables ----
 const questionsUI: HTMLElement | null = document.getElementById("questions-ui");
 const footerUI: HTMLElement | null = document.getElementById("footer-ui");
+const buttonsRow:HTMLElement | null = document.querySelector(".buttons-row");
 enum MenuScreens {
-  Title,
-  Difficulties,
-  Question
+  Title = "title",
+  Difficulties = "difficulties",
+  Question = "question"
 }
 let actualScreen: MenuScreens = MenuScreens.Title;
 let lang: 0 | 1 = 0;
@@ -29,18 +30,32 @@ let totalAnswers = 0;
 // ---- Button Listeners ----
 
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
-buttonPlay?.addEventListener("click", function() {
+buttonPlay?.addEventListener("click", buttonPlayFunction);
+
+function buttonPlayFunction(this: HTMLElement) {
   if (!this.classList.contains("button-blocked")) clearScreen(1250, createDifficultiesScreen, MenuScreens.Difficulties);
-});
+}
 
 // ---- FUNCTIONS ----
 // ---- Question Functions ----
 
-function buildElement(type: string, eClass: string, eText: string): HTMLElement {
+function buildElement(type: string, eClass: string, eText: string = ""): HTMLElement {
   const e: HTMLElement = document.createElement(type);
   e.classList.add(eClass);
   e.innerText = eText;
   return e;
+}
+function createBackButton() {
+  const backButton: HTMLButtonElement = document.createElement("button");
+  backButton.classList.add("button-back");
+  backButton.type = "button";
+  backButton.addEventListener("click", backButtonAction);
+  const img: HTMLImageElement = document.createElement("img");
+  img.classList.add("button-icon");
+  img.src = "icons/back.svg";
+  img.alt = "Back";
+  backButton.appendChild(img);
+  questionsUI?.appendChild(backButton);
 }
 
     // ---- CLEAR SCREEN FUNCTIONS ----
@@ -69,7 +84,6 @@ function clearQuestion(): void {
   }
 }
 function clearAnimation(isTitle: boolean = false): void {
-  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
   if (buttonsRow) {
     buttonsRow.style.opacity = "0";
     const buttons = buttonsRow.children;
@@ -87,10 +101,40 @@ function clearAnimation(isTitle: boolean = false): void {
 }
 
     // ---- CREATE SCREEN FUNCTIONS
-function createDifficultiesScreen(): void {
+function createTitleScreen() {
+  const h1 = buildElement("h1", "screen-reader");
+  const img = document.createElement("img");
+  img.id = "logo";
+  img.src = "logo.png";
+  img.alt = "Devs Against The Clock Logo";
+  const title = document.querySelector(".title");
+  if (title) {
+    title.appendChild(h1);
+    title.appendChild(img);
+  }
+  function createButtonTitle(buttonId: string, imgSrc: string, imgAlt: string, buttonFunction: VoidFunction = () => console.log("This button doesn't have any functionality yet.")): HTMLElement {
+    const button = document.createElement("button");
+    button.classList.add("button-menu");
+    button.type = "button";
+    button.id = buttonId;
+    button.addEventListener("click", buttonFunction);
+    const buttonIcon = document.createElement("img");
+    buttonIcon.classList.add("button-icon");
+    buttonIcon.src = imgSrc;
+    buttonIcon.alt = imgAlt;
+    button.appendChild(buttonIcon);
+    return button;
+  }
+  if (buttonsRow) {
+    buttonsRow.appendChild(createButtonTitle("button-questions", "icons/questions.svg", "Questions"));
+    buttonsRow.appendChild(createButtonTitle("button-play", "icons/play.svg", "Play", buttonPlayFunction));
+    buttonsRow.appendChild(createButtonTitle("button-settings", "icons/settings.svg", "Settings"));
+    buttonsRow.style.opacity = "1"
+  }
+}
+function createDifficultiesScreen() {
   const questionTitle: HTMLElement | null = document.querySelector(".title");
   if (questionTitle) questionTitle.innerText = (lang == 0) ? "Select the difficulty" : "Selecciona la dificultad";
-  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
   const difficultiesArr = (lang == 0) ? ["Easy", "Normal", "Hard", "Expert"] : ["Fácil", "Normal", "Dificil", "Experto"];
   const difficultiesEnum = [Difficulty.Easy, Difficulty.Normal, Difficulty.Hard, Difficulty.Expert];
   difficultiesArr.forEach((text, index) => {
@@ -111,6 +155,7 @@ function createDifficultiesScreen(): void {
     buttonsRow?.appendChild(difficultyButton);
   })
   if (buttonsRow) buttonsRow.style.opacity = "1";
+  createBackButton();
 }
 function createQuestionScreen(id: number): void {
   // Gets the text
@@ -151,6 +196,14 @@ function createQuestionScreen(id: number): void {
   recentQuestionsQueue.push(id);
   if (recentQuestionsQueue.length > 40) recentQuestionsQueue.shift();
 }
+function backButtonAction(this: HTMLElement) {
+  switch (actualScreen) {
+    case MenuScreens.Difficulties:
+      clearScreen(1250, createTitleScreen, MenuScreens.Title);
+      break;
+  }
+  this.remove();
+}
 
 function checkAnswer(button: HTMLElement, id: number): boolean {
   const userAnswer: string = button.innerText;
@@ -158,8 +211,8 @@ function checkAnswer(button: HTMLElement, id: number): boolean {
 }
 
 function requestAnswer(value: boolean): void {
-  const answerContainer: HTMLElement = buildElement("div", "answer-container", "");
-  const answer: HTMLElement = buildElement("div", "answer", "");
+  const answerContainer: HTMLElement = buildElement("div", "answer-container");
+  const answer: HTMLElement = buildElement("div", "answer");
   const answerSpan: HTMLElement = buildElement("span", "answer-span", (value) ? correctLang : incorrectLang);
   answer.classList.add((value) ? "ans-correct" : "ans-incorrect");
   answer.appendChild(answerSpan);
@@ -179,7 +232,6 @@ function requestAnswer(value: boolean): void {
     setTimeout(() => clockBar.style.animation = "none", 1500);
   }
   nextQuestion();
-  const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
   if (buttonsRow) {
     setTimeout(() => buttonsRow.style.opacity = "1", 5);
     setTimeout(() => buttonsRow.style.opacity = "0", 500);
