@@ -247,11 +247,13 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  font-size: 30px;
-  text-align: center;
   opacity: 0;
   transition: opacity .5s;
   user-select: none;
+}
+.ui-text {
+  font-size: 30px;
+  text-align: center;
 }
 
   /* ---- Miscellaneous classes ---- */

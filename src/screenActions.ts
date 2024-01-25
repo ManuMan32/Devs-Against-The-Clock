@@ -18,7 +18,6 @@ function createTitleScreen() {
   img.src = "logo.png";
   img.alt = "Devs Against The Clock Logo";
   img.style.animation = "1s ease forwards appearLogo";
-  const title = document.querySelector(".title");
   if (title) {
     title.appendChild(h1);
     title.appendChild(img);
@@ -44,8 +43,7 @@ function createTitleScreen() {
   }
 }
 function createDifficultiesScreen() {
-  const questionTitle: HTMLElement | null = document.querySelector(".title");
-  if (questionTitle) questionTitle.innerText = (lang == 0) ? "Select the difficulty" : "Selecciona la dificultad";
+  if (title) title.innerText = (lang == 0) ? "Select the difficulty" : "Selecciona la dificultad";
   const difficultiesArr = (lang == 0) ? ["Easy", "Normal", "Hard", "Expert"] : ["Fácil", "Normal", "Dificil", "Experto"];
   const difficultiesEnum = [Difficulty.Easy, Difficulty.Normal, Difficulty.Hard, Difficulty.Expert];
   difficultiesArr.forEach((text, index) => {
@@ -68,14 +66,13 @@ function createDifficultiesScreen() {
   if (buttonsRow) buttonsRow.style.opacity = "1";
   createBackButton();
 }
-function createQuestionScreen(id: number): void {
+function createQuestionScreen(id: number) {
   // Gets the text
-  const questionTitle: HTMLElement | null = document.querySelector(".title");
   const questionAnswer: string = questions[id].answer;
   const questionOptions: string[] = questions[id].options;
 
   // Creates the principal elements
-  (questionTitle) ? questionTitle.innerText = questions[id].statement : void 0;
+  (title) ? title.innerText = questions[id].statement : void 0;
   const questionButtons: HTMLElement | null = document.querySelector(".buttons-row");
 
   // Creates the option buttons
@@ -106,6 +103,20 @@ function createQuestionScreen(id: number): void {
   }
   recentQuestionsQueue.push(id);
   if (recentQuestionsQueue.length > 40) recentQuestionsQueue.shift();
+}
+function createGameOverScreen() {
+  if (title) title.innerText = (lang == 0) ? "Time is out!" : "¡Se acabó el tiempo!";
+  const scores = [
+    `Points: ${points}`,
+    `Correct: ${correctAnswers}`,
+    `Incorrect: ${totalAnswers - correctAnswers}`
+  ];
+  scores.forEach(txt => {
+    const span = buildElement("span", "ui-text", txt);
+    if (buttonsRow) buttonsRow.appendChild(span);
+  });
+  if (buttonsRow) buttonsRow.style.opacity = "1";
+  createBackButton();
 }
 
 // Clear Screen Functions
@@ -145,7 +156,8 @@ function clearAnimation(isTitle: boolean = false): void {
     const logo: HTMLElement | null = document.getElementById("logo");
     if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
   } else {
-    const title: HTMLElement | null = document.querySelector(".title");
     (title) ? title.innerText = "" : void 0;
   }
+  const buttonBack = document.querySelector(".button-back");
+  if (buttonBack) buttonBack.remove();
 }

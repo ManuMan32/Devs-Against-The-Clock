@@ -25,6 +25,7 @@ function createBackButton() {
 function backButtonAction(this: HTMLElement) {
   switch (actualScreen) {
     case MenuScreens.Difficulties:
+    case MenuScreens.GameOver:
       clearScreen(800, createTitleScreen, MenuScreens.Title);
       break;
   }

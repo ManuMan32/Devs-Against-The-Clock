@@ -23,6 +23,7 @@ function createTimerInterval(stop = false) {
 function timerFunction() {
   time -= 0.1;
   updateClock();
+  if (time <= 0) timeIsOut();
 }
 function updateClock() {
   const barPercentage = (time / maxTime) * 100;
@@ -36,4 +37,13 @@ function modifyTime(timeAdd: number, operation: "add" | "subtract") {
   if (time > maxTime) time = maxTime;
   updateClock();
 }
+function timeIsOut() {
+  createTimerInterval(true);
+  time = maxTime;
+  updateClock();
+  if (clock) clock.style.opacity = "0";
+  if (footerUI) footerUI.style.opacity = "0";
+  clearScreen(1300, createGameOverScreen, MenuScreens.GameOver);
+}
+
 updateClock();

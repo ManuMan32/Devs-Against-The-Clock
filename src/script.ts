@@ -5,11 +5,13 @@
 // Variables
 const questionsUI: HTMLElement | null = document.getElementById("questions-ui");
 const footerUI: HTMLElement | null = document.getElementById("footer-ui");
+const title: HTMLElement | null = document.querySelector(".title");
 const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
 enum MenuScreens {
   Title = "title",
   Difficulties = "difficulties",
-  Question = "question"
+  Question = "question",
+  GameOver = "gameover"
 }
 let actualScreen: MenuScreens = MenuScreens.Title;
 let lang: 0 | 1 = 0;
