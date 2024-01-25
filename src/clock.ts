@@ -15,6 +15,7 @@ function createTimerInterval(stop = false) {
   else {
     timer = setInterval(timerFunction, 100)
     if (clock) clock.style.opacity = "1";
+    if (footerUI) footerUI.style.opacity = "1";
   };
 }
 function timerFunction() {

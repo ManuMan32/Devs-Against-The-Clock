@@ -230,8 +230,19 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   0% { background-color: #ff0000; }
   100% { background-color: var(--bar-color); }
 }
-
-#footer-ui { flex: 1; }
+/* ---- Footer ---- */
+#footer-ui {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .5s;
+  user-select: none;
+}
 
   /* ---- Miscellaneous classes ---- */
 .screen-reader {

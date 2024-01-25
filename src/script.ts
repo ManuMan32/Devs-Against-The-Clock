@@ -1,6 +1,7 @@
 // General Script of Devs Against The Clock
 // ---- Variables ----
 const questionsUI: HTMLElement | null = document.getElementById("questions-ui");
+const footerUI: HTMLElement | null = document.getElementById("footer-ui");
 enum MenuScreens {
   Title,
   Difficulties,
@@ -20,6 +21,10 @@ enum Difficulty {
 }
 let incrementTime = 7;
 let decrementTime = 3;
+
+let points = 0;
+let correctAnswers = 0;
+let totalAnswers = 0;
 
 // ---- Button Listeners ----
 
@@ -159,7 +164,16 @@ function requestAnswer(value: boolean): void {
   answer.classList.add((value) ? "ans-correct" : "ans-incorrect");
   answer.appendChild(answerSpan);
   answerContainer.appendChild(answer);
-  (value) ? modifyTime(incrementTime, "add") : modifyTime(decrementTime, "subtract");
+  if (value) {
+    modifyTime(incrementTime, "add");
+    points += 100;
+    correctAnswers++;
+  } else {
+    modifyTime(decrementTime, "subtract");
+    points -= 50;
+  }
+  totalAnswers++;
+  refreshUI();
   if (clockBar) {
     clockBar.style.animation = ".8s ease-out forwards " + ((value) ? "co" : "inco") + "rrectBarPulse";
     setTimeout(() => clockBar.style.animation = "none", 1500);
@@ -193,6 +207,15 @@ function nextQuestion(): void {
       break;
     }
   }
+}
+
+function refreshUI() {
+  const pointsSpan = document.getElementById("points");
+  const correctAnswersSpan = document.getElementById("correct-answers");
+  const totalAnswersSpan = document.getElementById("total-answers");
+  if (pointsSpan) pointsSpan.innerText = points.toString();
+  if (correctAnswersSpan) correctAnswersSpan.innerText = correctAnswers.toString();
+  if (totalAnswersSpan) totalAnswersSpan.innerText = totalAnswers.toString();
 }
 
 // ---- General Functions ----
