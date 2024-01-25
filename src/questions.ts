@@ -317,3 +317,63 @@ questions.push(createQuestion (
   "#44a3cc",
   ["red","hex(3, 7, 9)","rgb(2, 5, 6)"]
 ));
+// 51
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these is NOT a JavaScript datatype?' : '¿Cuál de estos no es un tipo de dato en JavaScript?',
+  "date",
+  ["number","symbol","object"]
+));
+// 52
+questions.push(createQuestion (
+  (lang == 0) ? 'In JavaScript, what will return (2 + "a")?' : 'En JavaScript ¿Que retornará (2 + "a")?',
+  "2a",
+  ["aa","error","true"]
+));
+// 53
+questions.push(createQuestion (
+  (lang == 0) ? 'What type of data does the "foreach" method work on?' : '¿En qué tipo de dato funciona el método "foreach"?',
+  "array",
+  ["string","object","date"]
+));
+// 54
+questions.push(createQuestion (
+  (lang == 0) ? 'What is the syntax of arrow functions?' : '¿Cuál es la sintaxis de las funciones flecha?',
+  "() => {}",
+  ["func => {}"," f() ===> ()","function()"]
+));
+// 55
+questions.push(createQuestion (
+  (lang == 0) ? "If the arrow functions only have one line, will they return what that line returns?" : "Las funciones flecha, si solo tienen una linea ¿Retonarán lo que devuelva esa linea?.",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 56
+questions.push(createQuestion (
+  (lang == 0) ? '"toCelsius" is a built-in JavaScript function' : '"toCelsius" es una función que viene con JavaScript.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 57
+questions.push(createQuestion (
+  (lang == 0) ? 'Which method creates an event listener for an object?' : '¿Con qué método se crea un event listener para un objeto?',
+  "addEventListener",
+  ["actionAdd","event","addEvent"]
+));
+// 58
+questions.push(createQuestion (
+  (lang == 0) ? 'What HTML attribute can I use to give functionality to a button?' : '¿Qué atributo HTML puedo usar para darle funcionalidad a un botón?',
+  "onclick",
+  ["placeholder","event","required"]
+));
+// 59
+questions.push(createQuestion (
+  (lang == 0) ? `To create a string, you can use " ", ' ' or...` : `Para crear un string, se puede utilizar " ", ' ' o...`,
+  "` `",
+  ["! !","${}","* *"]
+));
+// 60
+questions.push(createQuestion (
+  (lang == 0) ? 'You can access a specific character in a string using [].' : 'Puedes acceder a un caracter en específico de un string usando [].',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
