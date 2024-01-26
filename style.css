@@ -3,6 +3,7 @@
   --background1: #6b6b6b44;
   --background2: #dedede44;
   --screen-color: #848484;
+  --title-color: #9a9a9a;
   --text-color: #000000;
   --text-shadow: #ffffff;
   --button-color: #424242;
@@ -62,7 +63,15 @@ img { user-select: none; -webkit-user-drag: none; }
   padding: 0 40px;
   text-shadow: 0 0 4px var(--text-shadow);
   text-align: center;
-  background-color: var(--background2);
+  background-color: var(--title-color);
+}
+.title-animation {
+  position: absolute;
+  top: 0; left: 0;
+  bottom: 0; right: 0;
+  margin: auto;
+  z-index: 10000;
+  animation: 1.8s ease forwards showLogo;
 }
 .credits {
   opacity: .75;
@@ -137,6 +146,19 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 @keyframes appearLogo {
   0% { transform: scale(0); }
   100% { transform: scale(1); }
+}
+@keyframes showLogo {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.7); }
+  100% { transform: scale(0); }
+}
+@keyframes pulseScreen {
+  0% { background-color: #840000; }
+  100% { background-color: var(--screen-color); }
+}
+@keyframes pulseTitle {
+  0% { background-color: #9a0000; }
+  100% { background-color: var(--title-color); }
 }
 
 /* ---- Questions ---- */

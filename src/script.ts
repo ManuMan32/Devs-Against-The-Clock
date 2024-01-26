@@ -14,6 +14,7 @@ enum MenuScreens {
   GameOver = "gameover"
 }
 let actualScreen: MenuScreens = MenuScreens.Title;
+let gamePlaying = false;
 let lang: 0 | 1 = 0;
 let correctLang: string = "Correct!";
 let incorrectLang: string = "Incorrect!";

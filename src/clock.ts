@@ -38,12 +38,22 @@ function modifyTime(timeAdd: number, operation: "add" | "subtract") {
   updateClock();
 }
 function timeIsOut() {
+  gamePlaying = false;
   createTimerInterval(true);
   time = maxTime;
   updateClock();
   if (clock) clock.style.opacity = "0";
   if (footerUI) footerUI.style.opacity = "0";
-  clearScreen(1300, createGameOverScreen, MenuScreens.GameOver);
+  if (questionsUI) {
+    questionsUI.style.animation = "1s ease forwards pulseScreen";
+    setTimeout(() => questionsUI.style.animation = "none", 1100);
+    questionsUI.appendChild(createIconAnimation());
+  }
+  if (title) {
+    title.style.animation = "1s ease forwards pulseTitle";
+    setTimeout(() => title.style.animation = "none", 1100);
+  }
+  clearScreen(1900, createGameOverScreen, MenuScreens.GameOver);
 }
 
 updateClock();

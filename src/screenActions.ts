@@ -54,6 +54,7 @@ function createDifficultiesScreen() {
     difficultyButton.innerHTML = text;
     difficultyButton.addEventListener("click", function() {
       if (!this.classList.contains("button-blocked")) {
+        gamePlaying = true;
         changeDifficulty(difficultiesEnum[index]);
         clearScreen(1250, () => {
           createQuestionScreen(Math.floor(Math.random() * questions.length));
@@ -67,6 +68,7 @@ function createDifficultiesScreen() {
   createBackButton();
 }
 function createQuestionScreen(id: number) {
+  if (!gamePlaying) return;
   // Gets the text
   const questionAnswer: string = questions[id].answer;
   const questionOptions: string[] = questions[id].options;
@@ -117,6 +119,13 @@ function createGameOverScreen() {
   });
   if (buttonsRow) buttonsRow.style.opacity = "1";
   createBackButton();
+}
+function createIconAnimation(): HTMLImageElement {
+  const icon = document.createElement("img");
+  icon.classList.add("title-animation");
+  icon.src = "icons/gameicon.png";
+  icon.alt = "Icon";
+  return icon;
 }
 
 // Clear Screen Functions

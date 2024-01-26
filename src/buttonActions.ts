@@ -24,8 +24,10 @@ function createBackButton() {
 }
 function backButtonAction(this: HTMLElement) {
   switch (actualScreen) {
-    case MenuScreens.Difficulties:
     case MenuScreens.GameOver:
+      const icon = document.querySelector(".title-animation");
+      icon?.remove();
+    case MenuScreens.Difficulties:
       clearScreen(800, createTitleScreen, MenuScreens.Title);
       break;
   }
