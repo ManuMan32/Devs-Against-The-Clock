@@ -50,16 +50,16 @@ function changeDifficulty(index: Difficulty) {
   switch (index) {
     case Difficulty.Easy:
     default:
-      incrementTime = 7; decrementTime = 3;
+      incrementTime = 7; decrementTime = 2;
       break;
     case Difficulty.Normal:
-      incrementTime = 6; decrementTime = 4;
+      incrementTime = 6; decrementTime = 3;
       break;
     case Difficulty.Hard:
-      incrementTime = 5; decrementTime = 5;
+      incrementTime = 5; decrementTime = 4;
       break
     case Difficulty.Expert:
-      incrementTime = 4; decrementTime = 6;
+      incrementTime = 4; decrementTime = 5;
       break;
   }
 }

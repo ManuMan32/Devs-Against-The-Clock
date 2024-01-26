@@ -352,8 +352,8 @@ questions.push(createQuestion (
 // 56
 questions.push(createQuestion (
   (lang == 0) ? '"toCelsius" is a built-in JavaScript function' : '"toCelsius" es una función que viene con JavaScript.',
-  (lang == 0) ? "True" : "Verdadero",
-  (lang == 0) ? ["False"] : ["Falso"]
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
 ));
 // 57
 questions.push(createQuestion (

@@ -28,15 +28,18 @@ function requestAnswer(value: boolean): void {
     clockBar.style.animation = ".8s ease-out forwards " + ((value) ? "co" : "inco") + "rrectBarPulse";
     setTimeout(() => clockBar.style.animation = "none", 1500);
   }
-  nextQuestion();
+  nextQuestion((value) ? 1000 : 1500);
   if (buttonsRow) {
     setTimeout(() => buttonsRow.style.opacity = "1", 5);
-    setTimeout(() => buttonsRow.style.opacity = "0", 500);
+    setTimeout(() => buttonsRow.style.opacity = "0", (value) ? 500 : 1000);
     if (!value) {
-      for (let i in buttonsRow.children) {
-        const element = buttonsRow.children[parseInt(i)];
-        if (typeof element == "object") {
-          if (element.innerHTML == questions[actualQuestion].answer) element.classList.add("button-blocked-correct");
+      for (let j in buttonsRow.children) {
+        if (parseInt(j).toString() != "NaN") {
+          const val = parseInt(j);
+          const element: HTMLElement | null = document.querySelector(`.buttons-row .button-option:nth-child(${val + 1})`);
+          if (element) {
+            if (element.innerText == questions[actualQuestion].answer) element.classList.add("button-blocked-correct");
+          }
         }
       }
     }
@@ -45,13 +48,13 @@ function requestAnswer(value: boolean): void {
   title?.appendChild(answerContainer);
   setTimeout(() => answerContainer.remove(), 2000);
 }
-function nextQuestion(): void {
-  clearScreen(1000);
+function nextQuestion(clearTime: number): void {
+  clearScreen(clearTime);
   let newId = Math.floor(Math.random() * questions.length)
   while (true) {
     if (recentQuestionsQueue.includes(newId)) newId = Math.floor(Math.random() * questions.length);
     else {
-      setTimeout(() => createQuestionScreen(newId), 1250);
+      setTimeout(() => createQuestionScreen(newId), clearTime + 250);
       break;
     }
   }
