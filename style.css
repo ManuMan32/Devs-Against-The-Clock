@@ -276,6 +276,7 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 .ui-text {
   font-size: 30px;
   text-align: center;
+  background-color: transparent !important;
 }
 
   /* ---- Miscellaneous classes ---- */
