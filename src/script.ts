@@ -3,12 +3,14 @@
 // General Script
 
 // Variables
-const questionsUI: HTMLElement | null = document.getElementById("questions-ui");
-const footerUI: HTMLElement | null = document.getElementById("footer-ui");
-const title: HTMLElement | null = document.querySelector(".title");
-const buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
-enum MenuScreens {
+const main = document.getElementById("screen");
+let questionsUI: HTMLElement | null = document.getElementById("questions-ui");
+let footerUI: HTMLElement | null = document.getElementById("footer-ui");
+let title: HTMLElement | null = document.querySelector(".title");
+let buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
+const enum MenuScreens {
   Title = "title",
+  QuestionsList = "questionslist",
   Difficulties = "difficulties",
   Question = "question",
   GameOver = "gameover"
@@ -20,7 +22,7 @@ let correctLang: string = "Correct!";
 let incorrectLang: string = "Incorrect!";
 const recentQuestionsQueue: number[] = [];
 let actualQuestion: number;
-enum Difficulty {
+const enum Difficulty {
   Easy = "easy",
   Normal = "normal",
   Hard = "hard",
@@ -34,6 +36,15 @@ let correctAnswers = 0;
 let totalAnswers = 0;
 
 // General Functions
+// Clears all childrens of an element
+function clearElement(element: Element | HTMLElement | null): void {
+  if (element) {
+    const children = element.childNodes;
+    for (let i in children) {
+      if (typeof children[0] == "object") children[0].remove();
+    }
+  }
+}
 function refreshUI() {
   const pointsSpan = document.getElementById("points");
   const correctAnswersSpan = document.getElementById("correct-answers");

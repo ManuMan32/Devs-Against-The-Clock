@@ -7,6 +7,7 @@ type Question = {
   statement: string
   answer: string
   options: string[]
+  appear?: true
 }
 const questions: Question[] = [];
 function createQuestion(statement: string, answer: string, options: string[]): Question {

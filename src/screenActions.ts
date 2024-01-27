@@ -3,15 +3,32 @@
 // Functions that manage the game's screen
 
 // Principal builder function
-function buildElement(type: string, eClass: string, eText: string = ""): HTMLElement {
+function buildElement(type: string, eClass: string | null = null, eText: string = ""): HTMLElement {
   const e: HTMLElement = document.createElement(type);
-  e.classList.add(eClass);
+  if (eClass) e.classList.add(eClass);
   e.innerText = eText;
   return e;
 }
 
 // Create Screen Functions
 function createTitleScreen() {
+  if (document.querySelector("#questions-ui") == null) {
+    createClock();
+    const newQuestionUI = buildElement("section");
+    newQuestionUI.id = "questions-ui";
+    const newTitle = buildElement("div", "title");
+    title = newTitle;
+    const newButtonsRow = buildElement("div", "buttons-row");
+    buttonsRow = newButtonsRow;
+    const credits = buildElement("span", "credits");
+    credits.innerHTML = `Page made by <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a>`;
+    newQuestionUI.appendChild(newTitle);
+    newQuestionUI.appendChild(newButtonsRow);
+    newQuestionUI.appendChild(credits);
+    questionsUI = newQuestionUI;
+    main?.appendChild(newQuestionUI);
+    createFooter();
+  }
   const h1 = buildElement("h1", "screen-reader");
   const img = document.createElement("img");
   img.id = "logo";
@@ -36,7 +53,7 @@ function createTitleScreen() {
     return button;
   }
   if (buttonsRow) {
-    buttonsRow.appendChild(createButtonTitle("button-questions", "icons/questions.svg", "Questions"));
+    buttonsRow.appendChild(createButtonTitle("button-questions", "icons/questions.svg", "Questions", buttonQuestionsFunction));
     buttonsRow.appendChild(createButtonTitle("button-play", "icons/play.svg", "Play", buttonPlayFunction));
     buttonsRow.appendChild(createButtonTitle("button-settings", "icons/settings.svg", "Settings"));
     buttonsRow.style.opacity = "1"
@@ -90,6 +107,7 @@ function createQuestionScreen(id: number) {
     button.addEventListener("click", function() {
       if (!this.classList.contains("button-blocked")) {
         actualQuestion = id;
+        if (!questions[id].hasOwnProperty("appear")) questions[id].appear = true;
         const response: boolean = checkAnswer(this, id);
         this.classList.add((response) ? "button-blocked-correct" : "button-blocked-incorrect");
         requestAnswer(response);
@@ -127,6 +145,27 @@ function createIconAnimation(): HTMLImageElement {
   icon.alt = "Icon";
   return icon;
 }
+function createClock(): void {
+  const clockUI = buildElement("header");
+  clockUI.id = "clock-ui";
+  const clockEl = buildElement("div", "clock");
+  const clockBar = buildElement("div", "clock-bar");
+  clockEl.appendChild(clockBar);
+  clockUI.appendChild(clockEl);
+  main?.appendChild(clockUI);
+}
+function createFooter(): void {
+  const footer = buildElement("footer");
+  footer.id = "footer-ui";
+  const pointCounter = buildElement("span", "ui-text");
+  pointCounter.innerHTML = `Points: <span id="points">0</span>`;
+  const answersCounter = buildElement("span", "ui-text");
+  answersCounter.innerHTML = `Correct answers: <span id="correct-answers">0</span> / <span id="total-answers">0</span>`;
+  footer.appendChild(pointCounter);
+  footer.appendChild(answersCounter);
+  footerUI = footer;
+  main?.appendChild(footer);
+}
 
 // Clear Screen Functions
 function clearScreen(timeout: number = 1250, nextScreenFunction: VoidFunction | undefined = undefined, nextScreenType: MenuScreens | undefined = undefined): void {
@@ -134,10 +173,10 @@ function clearScreen(timeout: number = 1250, nextScreenFunction: VoidFunction | 
   clearAnimation(actualScreen == MenuScreens.Title);
   // Then creates a new one
   setTimeout(() => clearQuestion(), timeout);
-  if (nextScreenFunction && nextScreenType) {
-    actualScreen = nextScreenType;
+  if (nextScreenFunction) {
     setTimeout(() => { nextScreenFunction(); }, timeout + 250);
   }
+  if (nextScreenType) actualScreen = nextScreenType;
 }
 function clearQuestion(): void {
   const screenElements: HTMLCollection | undefined = questionsUI?.children;

@@ -30,8 +30,8 @@ function requestAnswer(value: boolean): void {
   }
   nextQuestion((value) ? 1000 : 1500);
   if (buttonsRow) {
-    setTimeout(() => buttonsRow.style.opacity = "1", 5);
-    setTimeout(() => buttonsRow.style.opacity = "0", (value) ? 500 : 1000);
+    setTimeout(() => { if (buttonsRow) buttonsRow.style.opacity = "1" }, 5);
+    setTimeout(() => { if (buttonsRow) buttonsRow.style.opacity = "0" }, (value) ? 500 : 1000);
     if (!value) {
       for (let j in buttonsRow.children) {
         if (parseInt(j).toString() != "NaN") {

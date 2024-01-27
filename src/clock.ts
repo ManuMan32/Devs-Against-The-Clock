@@ -46,12 +46,12 @@ function timeIsOut() {
   if (footerUI) footerUI.style.opacity = "0";
   if (questionsUI) {
     questionsUI.style.animation = "1s ease forwards pulseScreen";
-    setTimeout(() => questionsUI.style.animation = "none", 1100);
+    setTimeout(() => { if (questionsUI) questionsUI.style.animation = "none" }, 1100);
     questionsUI.appendChild(createIconAnimation());
   }
   if (title) {
     title.style.animation = "1s ease forwards pulseTitle";
-    setTimeout(() => title.style.animation = "none", 1100);
+    setTimeout(() => { if (title) title.style.animation = "none" }, 1100);
   }
   clearScreen(1900, createGameOverScreen, MenuScreens.GameOver);
 }

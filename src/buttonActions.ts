@@ -3,6 +3,17 @@
 // Button Events Listeners
 
 // Title buttons
+const buttonQuestions: HTMLElement | null = document.getElementById("button-questions");
+buttonQuestions?.addEventListener("click", buttonQuestionsFunction);
+function buttonQuestionsFunction(this: HTMLElement) {
+  if (!this.classList.contains("button-blocked")) {
+    clearScreen(1250, void 0, MenuScreens.QuestionsList);
+    setTimeout(() => {
+      clearElement(main);
+      createQuestionsMenu();
+    }, 1250);
+  }
+}
 const buttonPlay: HTMLElement | null = document.getElementById("button-play");
 buttonPlay?.addEventListener("click", buttonPlayFunction);
 function buttonPlayFunction(this: HTMLElement) {
@@ -29,6 +40,14 @@ function backButtonAction(this: HTMLElement) {
       icon?.remove();
     case MenuScreens.Difficulties:
       clearScreen(800, createTitleScreen, MenuScreens.Title);
+      break;
+    case MenuScreens.QuestionsList:
+      if (title) title.style.opacity = "0";
+      const qContainer: HTMLElement | null = document.querySelector(".questions-container");
+      if (qContainer) qContainer.style.opacity = "0";
+      clearScreen(800, void 0, MenuScreens.Title);
+      setTimeout(() => clearElement(main), 800);
+      setTimeout(() => createTitleScreen(), 800);
       break;
   }
   this.remove();
