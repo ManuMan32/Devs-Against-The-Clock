@@ -26,7 +26,7 @@ function requestAnswer(value: boolean): void {
   refreshUI();
   if (clockBar) {
     clockBar.style.animation = ".8s ease-out forwards " + ((value) ? "co" : "inco") + "rrectBarPulse";
-    setTimeout(() => clockBar.style.animation = "none", 1500);
+    setTimeout(() => { if (clockBar) clockBar.style.animation = "none" }, 1500);
   }
   nextQuestion((value) ? 1000 : 1500);
   if (buttonsRow) {

@@ -146,13 +146,15 @@ function createIconAnimation(): HTMLImageElement {
   return icon;
 }
 function createClock(): void {
-  const clockUI = buildElement("header");
-  clockUI.id = "clock-ui";
-  const clockEl = buildElement("div", "clock");
-  const clockBar = buildElement("div", "clock-bar");
-  clockEl.appendChild(clockBar);
-  clockUI.appendChild(clockEl);
-  main?.appendChild(clockUI);
+  const newClockUI = buildElement("header");
+  newClockUI.id = "clock-ui";
+  const newClockEl = buildElement("div", "clock");
+  const newClockBar = buildElement("div", "clock-bar");
+  clock = newClockEl;
+  clockBar = newClockBar;
+  newClockEl.appendChild(newClockBar);
+  newClockUI.appendChild(newClockEl);
+  main?.appendChild(newClockUI);
 }
 function createFooter(): void {
   const footer = buildElement("footer");
