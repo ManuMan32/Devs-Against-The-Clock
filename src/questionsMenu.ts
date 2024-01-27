@@ -9,6 +9,7 @@ const questionsPerPage = 4;
 function createQuestionsMenu(): void {
   const newQuestionUI = buildElement("section");
   newQuestionUI.id = "questions-ui";
+  // Creates the title bar
   const newTitle = buildElement("div", "title", (lang == 0) ? "Game questions list" : "Lista de preguntas del juego");
   const questionsContainer = buildElement("div", "questions-container");
   // Left button for question list control
@@ -39,17 +40,18 @@ function createQuestionsMenu(): void {
   const rImgButton = document.createElement("img");
   rImgButton.classList.add("button-icon");
   rImgButton.src = "icons/play.svg";
-  rImgButton.alt = "Left";
+  rImgButton.alt = "Right";
   rightButton.appendChild(rImgButton);
   questionsContainer.appendChild(rightButton);
-  // Miscellaneous things
+  // Makes the container appear (animation)
   setTimeout(() => questionsContainer.style.opacity = "1", 200);
+  // Appends the new UI and sets the variables
   title = newTitle;
   newQuestionUI.appendChild(newTitle);
   newQuestionUI.appendChild(questionsContainer);
   questionsUI = newQuestionUI;
   main?.appendChild(newQuestionUI);
-  updateButtons();
+  updateButtons(); // This is for checking if a button must be blocked when the list creates
   createBackButton();
 }
 // Creates the question list depending on the current page
