@@ -52,7 +52,12 @@ function createQuestionsMenu(): void {
   questionsUI = newQuestionUI;
   main?.appendChild(newQuestionUI);
   updateButtons(); // This is for checking if a button must be blocked when the list creates
-  createBackButton();
+  createMinorButton("back");
+  createMinorButton("info", (lang == 0) ?
+    "As you answer questions in the game, they will be saved here. You can refer back to the correct answers whenever you want."
+    :
+    "A medida que vayas respondiendo preguntas en el juego, estas se irán guardando aquí. Puedes volver a consultar las respuestas correctas cuando quieras."
+  );
 }
 // Creates the question list depending on the current page
 function buildQuestionsList(): DocumentFragment {

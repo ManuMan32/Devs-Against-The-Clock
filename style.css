@@ -109,7 +109,7 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   font-size: 25px;
   margin: 0 20px;
 }
-.button-back {
+.button-back, .button-info {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -118,6 +118,12 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   padding: 10px !important;
   border: 1px solid var(--button-shadow) !important;
   border-bottom: 3px solid var(--button-shadow) !important;
+}
+.button-info {
+  left: unset;
+  right: 10px;
+  font-size: 16px;
+  color: #ffffff88 !important;
 }
 .button-difficulty-easy { background-color: #006c00 !important; border-color: #002200 !important; }
 .button-difficulty-easy:hover { background-color: #007700 !important; }

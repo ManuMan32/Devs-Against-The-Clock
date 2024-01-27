@@ -21,17 +21,23 @@ function buttonPlayFunction(this: HTMLElement) {
 }
 
 // Back button
-function createBackButton() {
-  const backButton: HTMLButtonElement = document.createElement("button");
-  backButton.classList.add("button-back");
-  backButton.type = "button";
-  backButton.addEventListener("click", backButtonAction);
-  const img: HTMLImageElement = document.createElement("img");
-  img.classList.add("button-icon");
-  img.src = "icons/back.svg";
-  img.alt = "Back";
-  backButton.appendChild(img);
-  questionsUI?.appendChild(backButton);
+function createMinorButton(type: "back" | "info", infoContent: string = "") {
+  const mButton: HTMLButtonElement = document.createElement("button");
+  mButton.type = "button";
+  if (type == "back") {
+    mButton.classList.add("button-back");
+    mButton.addEventListener("click", backButtonAction);
+    const img: HTMLImageElement = document.createElement("img");
+    img.classList.add("button-icon");
+    img.src = "icons/back.svg";
+    img.alt = "Back";
+    mButton.appendChild(img);
+  } else {
+    mButton.classList.add("button-info");
+    mButton.addEventListener("click", () => { if (title) title.innerText = infoContent });
+    mButton.innerText = "i";
+  }
+  questionsUI?.appendChild(mButton);
 }
 function backButtonAction(this: HTMLElement) {
   switch (actualScreen) {
@@ -45,6 +51,8 @@ function backButtonAction(this: HTMLElement) {
       if (title) title.style.opacity = "0";
       const qContainer: HTMLElement | null = document.querySelector(".questions-container");
       if (qContainer) qContainer.style.opacity = "0";
+      const infoButton: HTMLElement | null = document.querySelector(".button-info");
+      infoButton?.remove();
       clearScreen(800, void 0, MenuScreens.Title);
       setTimeout(() => clearElement(main), 800);
       setTimeout(() => createTitleScreen(), 800);

@@ -82,7 +82,7 @@ function createDifficultiesScreen() {
     buttonsRow?.appendChild(difficultyButton);
   })
   if (buttonsRow) buttonsRow.style.opacity = "1";
-  createBackButton();
+  createMinorButton("back");
 }
 function createQuestionScreen(id: number) {
   if (!gamePlaying) return;
@@ -136,7 +136,7 @@ function createGameOverScreen() {
     if (buttonsRow) buttonsRow.appendChild(span);
   });
   if (buttonsRow) buttonsRow.style.opacity = "1";
-  createBackButton();
+  createMinorButton("back");
 }
 function createIconAnimation(): HTMLImageElement {
   const icon = document.createElement("img");
