@@ -22,6 +22,7 @@ function createQuestionsMenu(): void {
   rightButton.type = "button";
   rightButton.addEventListener("click", () => newPage(1));
   questionsContainer.appendChild(rightButton);
+  setTimeout(() => questionsContainer.style.opacity = "1", 200);
   title = newTitle;
   newQuestionUI.appendChild(newTitle);
   newQuestionUI.appendChild(questionsContainer);
