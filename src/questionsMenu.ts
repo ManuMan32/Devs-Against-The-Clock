@@ -67,20 +67,24 @@ function buildQuestionsList(): DocumentFragment {
     const id = buildingQuestion + (questionsPerPage * page);
     const object: Question = questions[id];
     if (object) {
+      const hasQuestion = (object.hasOwnProperty("appear")); // Checks if you answered the question before
       const q = buildElement("div", "question");
       const qId = buildElement("span", "question-id", (id + 1).toString());
-      const qTitle = buildElement("span", "question-title", object.statement);
-      const qOptions = buildElement("div", "question-options");
-      const qRightAnswer = buildElement("span", "question-option", object.answer);
-      qRightAnswer.classList.add("question-answer");
-      qOptions.appendChild(qRightAnswer);
-      object.options.forEach(op => {
-        const option = buildElement("span", "question-option", op);
-        qOptions.appendChild(option);
-      })
+      const qTitle = buildElement("span", "question-title", (hasQuestion) ? object.statement : "???");
       q.appendChild(qId);
       q.appendChild(qTitle);
-      q.appendChild(qOptions);
+      if (hasQuestion) {
+        // If you answered the question before, the options are shown
+        const qOptions = buildElement("div", "question-options");
+        const qRightAnswer = buildElement("span", "question-option", object.answer);
+        qRightAnswer.classList.add("question-answer");
+        qOptions.appendChild(qRightAnswer);
+        object.options.forEach(op => {
+          const option = buildElement("span", "question-option", op);
+          qOptions.appendChild(option);
+        })
+        q.appendChild(qOptions);
+      }
       fragment.appendChild(q);
     }
     buildingQuestion++;
