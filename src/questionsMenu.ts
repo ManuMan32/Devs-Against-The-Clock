@@ -107,7 +107,7 @@ function updateButtons() {
   else leftButton?.classList.toggle("button-blocked", false);
   // Checks if page > questionsOverflow, then blocks the right button
   const rightButton = document.querySelector(".button-right");
-  const checkOverflow = (questions.length < questionsPerPage * (page + 1));
+  const checkOverflow = (questions.length - 1 < questionsPerPage * (page + 1));
   if (checkOverflow) rightButton?.classList.add("button-blocked");
   else rightButton?.classList.toggle("button-blocked", false);
 }
