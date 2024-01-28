@@ -341,6 +341,162 @@ questions.push(createQuestion (
   (lang == 0) ? "False" : "False",
   (lang == 0) ? ["True"] : ["Verdadero"]
 ));
+// 14
+questions.push(createQuestion (
+  (lang == 0) ? "What CSS property changes the color of a text?" : "¿Cuál propiedad CSS cambia el color de un texto?",
+  "color",
+  ["text-color","background-color","font-color"]
+));
+// 15
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these is the universal CSS selector?" : "¿Cuál es el selector universal de CSS?",
+  "*",
+  [".","universal","_all"]
+));
+// 16
+questions.push(createQuestion (
+  (lang == 0) ? "What CSS property is used to add a space between letters in a text?" : "¿Qué propiedad CSS se usa para agregar un espacio entre las letras de un texto?",
+  "letter-spacing",
+  ["space-between","font-weight","font-space"]
+));
+// 17
+questions.push(createQuestion (
+  (lang == 0) ? "What CSS property is used to capitalize a text?" : "¿Qué propiedad CSS se utiliza para poner en mayúscula un texto?",
+  "text-transform",
+  ["uppercase","font-weight","text-style"]
+));
+// 18
+questions.push(createQuestion (
+  (lang == 0) ? "What CSS property is used to make text bold?" : "¿Qué propiedad CSS se utiliza para poner un texto en negrita?",
+  "font-weight",
+  ["font-style","font-bold","text-size"]
+));
+// 19
+questions.push(createQuestion (
+  (lang == 0) ? "What CSS property is used to make text italic?" : "¿Qué propiedad CSS se utiliza para poner un texto en cursiva?",
+  "font-style",
+  ["oblique","text-indent","font-type"]
+));
+// 20
+questions.push(createQuestion (
+  (lang == 0) ? "Which function should I use if I want to create a gradient in CSS?" : "¿Qué función debo usar si quiero crear un gradiente en CSS?",
+  "linear-gradient",
+  ["color-mix","grad","generate-gradient"]
+));
+// 21
+questions.push(createQuestion (
+  (lang == 0) ? "What CSS property should I use if I want to create a flex container?" : "¿Qué propiedad CSS debo usar si quiero hacer un contenedor flex?",
+  "display",
+  ["position","flex","flex-template"]
+));
+// 22
+questions.push(createQuestion (
+  (lang == 0) ? "What CSS property should I use if I want one element to look above the other?" : "¿Qué propiedad CSS debo usar si quiero que un elemento se vea por encima del otro?",
+  "z-index",
+  ["display","grid","depth"]
+));
+// 23
+questions.push(createQuestion (
+  (lang == 0) ? "What CSS property should I use if I want to make some text unselectable?" : "¿Qué propiedad CSS debo usar si quiero que un texto no se pueda seleccionar?",
+  "user-select",
+  ["text-unselect","font-style","select"]
+));
+// 24
+questions.push(createQuestion (
+  (lang == 0) ? "Semicolons are NOT necessary in CSS." : "El punto y coma NO es necesario en CSS.",
+  (lang == 0) ? "False" : "False",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 25
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these is the CSS id selector?" : "¿Cuál de estos es el selector de id de CSS?",
+  "#",
+  [".","[]","*"]
+));
+// 26
+questions.push(createQuestion (
+  (lang == 0) ? "CSS stylesheets can be imported and exported." : "Las hojas de estilo CSS se pueden importar y exportar.",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 27
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these is a relative CSS unit?" : "¿Cuál de estas es una unidad relativa en CSS?",
+  "%",
+  ["px","cm","in"]
+));
+// 28
+questions.push(createQuestion (
+  (lang == 0) ? "An element can have a background image using CSS." : "Un elemento puede tener una imagen de fondo usando CSS.",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 29
+questions.push(createQuestion (
+  (lang == 0) ? '"border" is a shorthand property in CSS.' : '"border" es una propiedad shorthand en CSS.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 30
+questions.push(createQuestion (
+  (lang == 0) ? '"grid-gap" is a shorthand property in CSS.' : '"grid-gap" es una propiedad shorthand en CSS.',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 31
+questions.push(createQuestion (
+  (lang == 0) ? '"text-align" is a shorthand property in CSS.' : '"text-align" es una propiedad shorthand en CSS.',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 32
+questions.push(createQuestion (
+  (lang == 0) ?  `Which of these CSS properties can't have "auto" as a valid value?` : '¿Cuál de estas propiedades CSS no puede tener "auto" como valor válido?',
+  "color",
+  ["position","margin","height"]
+));
+// 33
+questions.push(createQuestion (
+  (lang == 0) ?  `Which of these CSS properties is NOT inherited?` : '¿Cuál de estas propiedades CSS no es heredada?',
+  "padding",
+  ["font-size","color","font-family"]
+));
+// 34
+questions.push(createQuestion (
+  (lang == 0) ?  `Which of these properties is NOT part of the CSS box model?` : '¿Cuál de estas propiedades NO forma parte del CSS box model?',
+  "gap",
+  ["margin","border","padding"]
+));
+// 35
+questions.push(createQuestion (
+  (lang == 0) ?  `Outline in CSS is drawn outside the borders of an element.` : 'El outline en CSS se dibuja fuera de los bordes de un elemento.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 36
+questions.push(createQuestion (
+  (lang == 0) ?  `"double" is a valid border style.` : '"double" es un estilo de borde válido.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 37
+questions.push(createQuestion (
+  (lang == 0) ?  `"gradient" is a valid border style.` : '"gradient" es un estilo de borde válido.',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 38
+questions.push(createQuestion (
+  (lang == 0) ?  `CSS has a "calc" function.` : 'CSS tiene una función "calc".',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 39
+questions.push(createQuestion (
+  (lang == 0) ?  `CSS has an "if" function` : 'CSS tiene una función "if"',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
 
 // JavaScript Questions
 // 0
