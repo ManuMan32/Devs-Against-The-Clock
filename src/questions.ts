@@ -41,69 +41,219 @@ questions.push(createQuestion (
 ));
 // 4
 questions.push(createQuestion (
+  (lang == 0) ? 'Which HTML tag embeds sound content in a website?' : '¿Qué etiqueta HTML sube contenido de sonido a la página web?',
+  "<audio>",
+  ["<mp3>","<sound>","<music>"]
+));
+// 5
+questions.push(createQuestion (
+  (lang == 0) ? 'What HTML tag creates a cell within a table?' : '¿Qué etiqueta HTML crea una celda dentro de una tabla?',
+  "<td>",
+  ["<th>","<tc>","<table>"]
+));
+// 6
+questions.push(createQuestion (
+  (lang == 0) ? 'What HTML tag inserts an ordered list?' : '¿Qué etiqueta HTML inserta una lista ordenada?',
+  "<ol>",
+  ["<li>","<ul>","<list>"]
+));
+// 7
+questions.push(createQuestion (
+  (lang == 0) ? 'What HTML tag highlights text?' : '¿Qué etiqueta HTML resalta un texto?',
+  "<mark>",
+  ["<strike>","<hl>","<strong>"]
+));
+// 8
+questions.push(createQuestion (
   (lang == 0) ? 'What HTML attribute can I use to give functionality to a button?' : '¿Qué atributo HTML puedo usar para darle funcionalidad a un botón?',
   "onclick",
   ["placeholder","event","required"]
 ));
-// 5
+// 9
 questions.push(createQuestion (
   (lang == 0) ? "The text inside an HTML tag is a TextNode." : "El texto dentro de una etiqueta HTML es un TextNode.",
   (lang == 0) ? "True" : "Verdadero",
   (lang == 0) ? ["False"] : ["Falso"]
 ));
-// 6
+// 10
 questions.push(createQuestion (
   (lang == 0) ? "HTML is case sensitive." : "HTML es sensible a mayúsculas.",
   (lang == 0) ? "False" : "Falso",
   (lang == 0) ? ["True"] : ["Verdadero"]
 ));
-// 7
+// 11
 questions.push(createQuestion (
   (lang == 0) ? 'Which of these HTML tags draws a horizontal dividing line?' : '¿Cuál de estas etiquetas HTML dibuja una linea horizontal divisora?',
   "<hr>",
   ["<br>","<hl>","<break>"]
 ));
-// 8
+// 12
 questions.push(createQuestion (
   (lang == 0) ? 'How do you write comments in HTML?' : '¿Cómo se escriben comentarios en HTML?',
   "<!-- -->",
   ["<comment>","<-- -->","<// >"]
 ));
-// 9
+// 13
 questions.push(createQuestion (
   (lang == 0) ? "Which of these HTML tags is obsolete?" : "¿Cuál de estas etiquetas HTML está obsoleta?",
   "<marqueue>",
   ["<meter>","<summary>","<div>"]
 ));
-// 10
+// 14
 questions.push(createQuestion (
   (lang == 0) ? "In HTML, do description lists exist?" : "En HTML ¿Existen las description lists?",
   (lang == 0) ? "True" : "Verdadero",
   (lang == 0) ? ["False"] : ["Falso"]
 ));
-// 11
+// 15
 questions.push(createQuestion (
   (lang == 0) ? "Does HTML support animated GIFs within an <img> element?" : "¿HTML soporta GIFs animados dentro de un elemento <img>?",
   (lang == 0) ? "Yes" : "Si",
   ["No"]
 ));
-// 12
+// 16
 questions.push(createQuestion (
   (lang == 0) ? "With what attribute is a label connected to an input?" : "¿Con qué atributo se conecta un label a un input?",
   "for and name",
   ["name and value","for and id","id and value"]
 ));
-// 13
+// 17
 questions.push(createQuestion (
   '<meta name="viewport" content="width=__________, initial-scale=1" />',
   "device-width",
   ["media","auto","screen"]
 ));
-// 14
+// 18
+questions.push(createQuestion (
+  '<!DOCTYPE ____ >',
+  "html",
+  ["file","htmlfile","programming"]
+));
+// 19
 questions.push(createQuestion (
   (lang == 0) ? "Which of these is NOT an input type?" : "¿Cuál de estos NO es un tipo de input?",
   "select",
   ["week","radio","password"]
+));
+// 20
+questions.push(createQuestion (
+  (lang == 0) ? "What HTML attribute gives destination to an <a> element?" : "¿Qué atributo HTML le da destino a un elemento <a>?",
+  "href",
+  ["link","to","anchor"]
+));
+// 21
+questions.push(createQuestion (
+  (lang == 0) ? "What HTML attribute gives an alternative text to an <img> element?" : "¿Qué atributo HTML le da texto alternativo a un elemento <img>?",
+  "alt",
+  ["title","src","info"]
+));
+// 22
+questions.push(createQuestion (
+  (lang == 0) ? "What HTML attribute gives CSS rulesets to an element?" : "¿Qué atributo HTML le da reglas CSS a un elemento?",
+  "style",
+  ["css","stylesheet","properties"]
+));
+// 23
+questions.push(createQuestion (
+  (lang == 0) ? "What HTML attribute specifies where the data of a form should go?" : "¿Qué atributo HTML especifica a donde deben llegar los datos de un formulario?",
+  "action",
+  ["link","target","type"]
+));
+// 24
+questions.push(createQuestion (
+  (lang == 0) ? "Within which tag does the <title> of the web page go?" : "¿Dentro de cuál etiqueta va el <title> de la página web?",
+  "head",
+  ["meta","script","body"]
+));
+// 25
+questions.push(createQuestion (
+  (lang == 0) ? 'What should go inside the "target" attribute of an <a> for it to open in a new tab?' : '¿Qué debe ir dentro del atributo "target" de un <a> para que se abra en una nueva pestaña?',
+  "_blank",
+  ["_self","_open","_top"]
+));
+// 26
+questions.push(createQuestion (
+  (lang == 0) ? 'The <tfoot> tag exists and defines the footer of a table.' : 'La etiqueta <tfoot> existe y define el footer de una tabla.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 27
+questions.push(createQuestion (
+  (lang == 0) ? 'How many classes can an HTML element have at most?' : '¿Cuántas clases puede tener un elemento HTML como máximo?',
+  (lang == 0) ? "infinite" : "infinitas",
+  ["10","100","5"]
+));
+// 28
+questions.push(createQuestion (
+  (lang == 0) ? 'The <div> element in HTML has a semantic meaning.' : 'La etiqueta <div> en HTML tiene un significado semántico.',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 29
+questions.push(createQuestion (
+  (lang == 0) ? 'The <span> element in HTML has a semantic meaning.' : 'La etiqueta <span> en HTML tiene un significado semántico.',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 30
+questions.push(createQuestion (
+  (lang == 0) ? 'The <table> element in HTML has a semantic meaning.' : 'La etiqueta <table> en HTML tiene un significado semántico.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 31
+questions.push(createQuestion (
+  (lang == 0) ? 'The <article> element in HTML has a semantic meaning.' : 'La etiqueta <article> en HTML tiene un significado semántico.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 32
+questions.push(createQuestion (
+  (lang == 0) ? 'The ID of an HTML element can start with a number.' : 'La ID de un elemento HTML puede comenzar on un número.',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 33
+questions.push(createQuestion (
+  (lang == 0) ? 'Which HTML element is used to display a web page within a web page?' : '¿Qué elemento HTML se utiliza para mostrar una página web dentro de una página web?',
+  "<iframe>",
+  ["<anchor>","<api>","<page>"]
+));
+// 34
+questions.push(createQuestion (
+  (lang == 0) ? 'What HTML tag is used to add a JavaScript file to the page?' : '¿Qué etiqueta HTML se utiliza para agregar un archivo JavaScript a la página?',
+  "<script>",
+  ["<code>","<import>","<javascript>"]
+));
+// 35
+questions.push(createQuestion (
+  (lang == 0) ? 'What HTML tag is used to display a message to users who have JavaScript disabled?' : '¿Qué etiqueta HTML se utiliza para mostrar un mensaje a los usuarios que tienen JavaScript desactivado?',
+  "<noscript>",
+  ["<alt>","<codebreak>",(lang == 0) ? "It doesn't exist" : "No existe"]
+));
+// 36
+questions.push(createQuestion (
+  (lang == 0) ? 'What HTML tag is used to add a JavaScript file to the page?' : '¿Qué nombre debe tener la etiqueta <meta> para definir las palabras clave para los ?',
+  "<script>",
+  ["<code>","<import>","<javascript>"]
+));
+// 37
+questions.push(createQuestion (
+  (lang == 0) ? '<head> tag can be ommitted in an HTML document.' : 'La etiqueta <head> se puede omitir en un documento HTML.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 38
+questions.push(createQuestion (
+  (lang == 0) ? 'An HTML file can have the extension ".htm".' : 'Un archivo HTML puede tener la extensión ".htm".',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 39
+questions.push(createQuestion (
+  (lang == 0) ? 'The "contenteditable" attribute has practical use in all HTML tags.' : 'El atributo "contenteditable" tiene un uso práctico en todas las etiquetas HTML.',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
 ));
 
 // CSS Questions
@@ -284,6 +434,32 @@ questions.push(createQuestion (
   (lang == 0) ? ["No, only let and const"] : ["No, solo con let y const"]
 ));
 
+// console.log Questions
+// 0
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log(true + true)' what will the console show me?" : "Si ejecuto 'console.log(true + true)' ¿Qué me mostrará la consola?",
+  "2",
+  ["true","1","NaN"]
+));
+// 1
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log(!4)' what will the console show me?" : "Si ejecuto 'console.log(!4)' ¿Qué me mostrará la consola?",
+  "false",
+  ["-4","TypeError","24"]
+));
+// 2
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log(2 == '2')' what will the console show me?" : "Si ejecuto 'console.log(2 == '2')' ¿Qué me mostrará la consola?",
+  "true",
+  ["false","NaN"]
+));
+// 3
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log(parseInt('25.5'))' what will the console show me?" : "Si ejecuto 'console.log(parseInt('25.5'))' ¿Qué me mostrará la consola?",
+  "25",
+  ["25.5","5","0.5"]
+));
+
 // General Programming Questions
 // 0
 questions.push(createQuestion (
@@ -362,30 +538,4 @@ questions.push(createQuestion (
   (lang == 0) ? `To create a string, you can use " ", ' ' or...` : `Para crear un string, se puede utilizar " ", ' ' o...`,
   "` `",
   ["! !","${}","* *"]
-));
-
-// console.log Questions
-// 0
-questions.push(createQuestion (
-  (lang == 0) ? "If I run 'console.log(true + true)' what will the console show me?" : "Si ejecuto 'console.log(true + true)' ¿Qué me mostrará la consola?",
-  "2",
-  ["true","1","NaN"]
-));
-// 1
-questions.push(createQuestion (
-  (lang == 0) ? "If I run 'console.log(!4)' what will the console show me?" : "Si ejecuto 'console.log(!4)' ¿Qué me mostrará la consola?",
-  "false",
-  ["-4","TypeError","24"]
-));
-// 2
-questions.push(createQuestion (
-  (lang == 0) ? "If I run 'console.log(2 == '2')' what will the console show me?" : "Si ejecuto 'console.log(2 == '2')' ¿Qué me mostrará la consola?",
-  "true",
-  ["false","NaN"]
-));
-// 3
-questions.push(createQuestion (
-  (lang == 0) ? "If I run 'console.log(parseInt('25.5'))' what will the console show me?" : "Si ejecuto 'console.log(parseInt('25.5'))' ¿Qué me mostrará la consola?",
-  "25",
-  ["25.5","5","0.5"]
 ));
