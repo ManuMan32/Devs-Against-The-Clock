@@ -579,15 +579,165 @@ questions.push(createQuestion (
 ));
 // 13
 questions.push(createQuestion (
-  (lang == 0) ? "Which of these technologies is NOT a framework?" : "¿Cuál de estas tecnologías NO ES un framework?",
-  "TypeScript",
-  ["React","Bootstrap","Vue"]
-));
-// 14
-questions.push(createQuestion (
   (lang == 0) ? "In ES06 strict mode, can you declare a variable with 'var'?" : "En el modo estricto de ES06 ¿Se puede declarar una variable con 'var'?",
   (lang == 0) ? "Yes" : "Sí",
   (lang == 0) ? ["No, only let and const"] : ["No, solo con let y const"]
+));
+// 14
+questions.push(createQuestion (
+  (lang == 0) ? "In JavaScript, alert() is the same as window.alert()" : "En JavaScript, alert() funciona igual que window.alert().",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 15
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these is NOT a function of the JavaScript console?" : "¿Cuál de estas NO es una función de la consola de JavaScript?",
+  "console.mark",
+  ["console.error","console.log","console.count"]
+));
+// 16
+questions.push(createQuestion (
+  (lang == 0) ? "What method is used in JavaScript to return an element with a CSS selector?" : "¿Qué método se usa en JavaScript para retornar un elemento con un selector CSS?",
+  "querySelector",
+  ["selector","style","getComputed"]
+));
+// 17
+questions.push(createQuestion (
+  (lang == 0) ? "Semicolons are necessary in JavaScript" : "Los puntos y coma son necesarios en JavaSript.",
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 18
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these is NOT a loop in JavaScript?" : "¿Cuál de estos NO es un loop en JavaScript?",
+  "switch",
+  ["for","while","do while"]
+));
+// 19
+questions.push(createQuestion (
+  (lang == 0) ? '"BigInt" is a JavaScript primitive type.' : '"BigInt" es un tipo primitivo de JavaScript.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 20
+questions.push(createQuestion (
+  (lang == 0) ? "I can re-declare constant variables." : "Puedo volver a declarar variables constantes",
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 21
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these is a string?' : '¿Cuál de estos es un string?',
+  '"not a string!"',
+  ["34","name : pedro","[false, true]"]
+));
+// 22
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these is the "assignment operator"?' : '¿Cuál de estos es el "operador de asignación"?',
+  '=',
+  ["+","%","*"]
+));
+// 23
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these is the "modulus operator"?' : '¿Cuál de estos es el "operador de módulo"?',
+  '%',
+  ["===",">>","&"]
+));
+// 24
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these can I use to calculate a square root in JavaScript?' : '¿Cuál de estos puedo usar para calcular una raíz cuadrada en JavaScript?',
+  'Math.sqrt()',
+  ["√",">>","squareRoot()"]
+));
+// 25
+questions.push(createQuestion (
+  (lang == 0) ? 'What is the name given to strings that open and close with backticks? (``)' : '¿Cuál es el nombre que reciben los strings que se abren y cierran con backticks? (``)',
+  'Template Strings',
+  ["Special Strings","Backtick Strings","Data Strings"]
+));
+// 26
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these can I use to create a multiline comment?' : '¿Cuál de estos puedo usar para crear un comentario multilinea?',
+  '/*',
+  ["///","/!--","#comment"]
+));
+// 27
+questions.push(createQuestion (
+  (lang == 0) ? 'In JavaScript there is a static property that contains the PI number.' : 'En javaScript existe una propiedad estática que contiene el número PI.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 28
+questions.push(createQuestion (
+  (lang == 0) ? 'In JavaScript you can declare several variables on the same line with "let".' : 'En JavaScript se pueden declarar varias variables en una misma linea con "let".',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 29
+questions.push(createQuestion (
+  (lang == 0) ? 'In JavaScript, "undefined" is the same as "null"' : 'En JavaScript, "undefined" es lo mismo que "null"',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 30
+questions.push(createQuestion (
+  (lang == 0) ? 'You can use the push() method on constant arrays.' : 'Puedes utilizar el método push() en arrays constantes.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 31
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these operators compares "equal value and equal type"?' : '¿Cuál de estos operadores compara "igual valor e igual tipo"?',
+  '===',
+  ["<=","!==","=="]
+));
+// 32
+questions.push(createQuestion (
+  (lang == 0) ? 'You can compare strings with ">" and "<" operators.' : 'Puedes comparar strings con los operadores ">" y "<".',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 33
+questions.push(createQuestion (
+  (lang == 0) ? 'What type of data does the "typeof" operator return?' : '¿Qué tipo de dato retorna el operador "typeof"?',
+  'string',
+  ["object","number","JSON"]
+));
+// 34
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these is a Bitwise Operator?' : '¿Cuál de estos es un operador Bitwise?',
+  '>>>',
+  ["!=","?",">="]
+));
+// 35
+questions.push(createQuestion (
+  (lang == 0) ? '"Function" is a JavaScript primitive type.' : '"Function" es un tipo primitivo de JavaScript.',
+  (lang == 0) ? "False" : "Falso",
+  (lang == 0) ? ["True"] : ["Verdadero"]
+));
+// 36
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these is the default value returned by functions in JavaScript?' : '¿Cuál es el valor predeterminado que retornan las funciones en JavaScript?',
+  'undefined',
+  ["null","0","Error"]
+));
+// 37
+questions.push(createQuestion (
+  (lang == 0) ? 'Recursive functions in JavaScript have a limit on the number of times they can be called.' : 'Las funciones recursivas en JavaScript tienen un límite de veces que pueden ser llamadas.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 38
+questions.push(createQuestion (
+  (lang == 0) ? 'What is the global object of JavaScript?' : '¿Cuál es el objeto global de JavaScript?',
+  'window',
+  ["document","javascript","browser"]
+));
+// 39
+questions.push(createQuestion (
+  (lang == 0) ? 'What is the smallest number that the Math.random() function can return?' : '¿Cuál es el menor número que te puede devolver la función Math.random()?',
+  '0',
+  ["-1","0.0000001","1"]
 ));
 
 // console.log Questions
@@ -605,15 +755,63 @@ questions.push(createQuestion (
 ));
 // 2
 questions.push(createQuestion (
-  (lang == 0) ? "If I run 'console.log(2 == '2')' what will the console show me?" : "Si ejecuto 'console.log(2 == '2')' ¿Qué me mostrará la consola?",
+  (lang == 0) ? `If I run 'console.log(2 == "2")' what will the console show me?` : `Si ejecuto 'console.log(2 == '2')' ¿Qué me mostrará la consola?`,
   "true",
   ["false","NaN"]
 ));
 // 3
 questions.push(createQuestion (
-  (lang == 0) ? "If I run 'console.log(parseInt('25.5'))' what will the console show me?" : "Si ejecuto 'console.log(parseInt('25.5'))' ¿Qué me mostrará la consola?",
+  (lang == 0) ? `If I run 'console.log(parseInt("25.5"))' what will the console show me?` : `Si ejecuto 'console.log(parseInt("25.5"))' ¿Qué me mostrará la consola?`,
   "25",
   ["25.5","5","0.5"]
+));
+// 4
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log((false).toString())' what will the console show me?" : "Si ejecuto 'console.log((false).toString())' ¿Qué me mostrará la consola?",
+  "'false'",
+  ["0","TypeError","true"]
+));
+// 5
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log("5" * "a")' what will the console show me?` : `Si ejecuto 'console.log("5" * "a")' ¿Qué me mostrará la consola?`,
+  "NaN",
+  ["TypeError","5a","5"]
+));
+// 6
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(typeof typeof 4)' what will the console show me?` : `Si ejecuto 'console.log(typeof typeof 4)' ¿Qué me mostrará la consola?`,
+  "string",
+  ["function ()","number","4"]
+));
+// 7
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(typeof {})' what will the console show me?` : `Si ejecuto 'console.log(typeof {})' ¿Qué me mostrará la consola?`,
+  "object",
+  ["number","array","string"]
+));
+// 8
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log([] == false)' what will the console show me?` : `Si ejecuto 'console.log([] == false)' ¿Qué me mostrará la consola?`,
+  "true",
+  ["[]","false","NaN"]
+));
+// 9
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log({} === {})' what will the console show me?` : `Si ejecuto 'console.log({} === {})' ¿Qué me mostrará la consola?`,
+  "false",
+  ["true","NaN","{}"]
+));
+// 10
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(0.999 === 1)' what will the console show me?` : `Si ejecuto 'console.log(0.999 === 1)' ¿Qué me mostrará la consola?`,
+  "false",
+  ["TypeError","1","true"]
+));
+// 11
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(5 * "5")' what will the console show me?` : `Si ejecuto 'console.log(5 * "5")' ¿Qué me mostrará la consola?`,
+  "25",
+  ["55","NaN","5"]
 ));
 
 // General Programming Questions
@@ -694,4 +892,58 @@ questions.push(createQuestion (
   (lang == 0) ? `To create a string, you can use " ", ' ' or...` : `Para crear un string, se puede utilizar " ", ' ' o...`,
   "` `",
   ["! !","${}","* *"]
+));
+// 13
+questions.push(createQuestion (
+  (lang == 0) ? "Which of these technologies is NOT framework?" : "¿Cuál de estas tecnologías NO ES un framework?",
+  "TypeScript",
+  ["React","Bootstrap","Vue"]
+));
+// 14
+questions.push(createQuestion (
+  (lang == 0) ? "Using document.write() after a website is loaded will delete all existing HTML" : "Usar document.write() después de que cargue la página web borrará todo el HTML.",
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 15
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these texts is camel case?' : '¿Cuál de estos textos es camel case?',
+  'camelCase',
+  ["camel_case","CamelCase","camel-case"]
+));
+// 16
+questions.push(createQuestion (
+  (lang == 0) ? 'What character is used to create a regular expression?' : '¿Qué caracter se usa para crear una expresión regular?',
+  '/ /',
+  ["* *","| |","- -"]
+));
+// 17
+questions.push(createQuestion (
+  (lang == 0) ? 'test() is a method that works with...' : 'test() es un método que funciona con...',
+  'reg exp',
+  ["arrays","strings","conditions"]
+));
+// 18
+questions.push(createQuestion (
+  (lang == 0) ? 'In Regular Expressions, "n+"	matches any string that contains at least one n.' : 'En Expresiones Regulares, "n+" coincide con cualquier string que contenga al menos una n.',
+  (lang == 0) ? "True" : "Verdadero",
+  (lang == 0) ? ["False"] : ["Falso"]
+));
+// 19
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of the following strings matches the following regular expression: /f{3}/?' : '¿Cuál de los siguientes strings coincide con la siguiente expresión regular: /f{3}/?',
+  'awffful',
+  ["foffo","ffinff","financial freedom"]
+));
+// 20
+questions.push(createQuestion (
+  (lang == 0) ? 'What type of data are "Dates" in JavaScript?' : '¿Qué tipo de dato son las "Dates" en JavaScript?',
+  'object',
+  ["array","date","string"]
+));
+// 21
+questions.push(createQuestion (
+  (lang == 0) ? 'Which of these is NOT a property of the Math object in JavaScript?' : '¿Cuál de estas NO es una propiedad del objeto Math en JavaScript?',
+  'Math.ZERO',
+  ["Math.E","Math.PI","Math.SQRT2"]
 ));
