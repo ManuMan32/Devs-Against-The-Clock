@@ -2,29 +2,76 @@
 // Script written by Manuel Crocco
 // This controls the questions menu
 
-const themes = [
-  ["#6b6b6b44", "#dedede44"],
-  ["#995500af", "#bb6600af"],
-  ["#559900af", "#66bb00af"],
-  ["#5599aaaf", "#66bbccaf"],
-  ["#9955aaaf", "#bb66ccaf"]
-]
-
 // Creates the menu of options after cleaning the entire screen
 function createSettingsMenu(): void {
   const newQuestionUI = buildElement("section");
   newQuestionUI.id = "questions-ui";
   // Theme options
-  newQuestionUI.appendChild(createOption("Theme:", themes, (theme: string[]) => {
+  newQuestionUI.appendChild(createOption("Theme:", themes, (theme: [string, string]) => {
     const button = buildElement("div", "option");
+    button.id = theme.toString();
+    button.classList.add("option-type-theme");
+    button.style.backgroundColor = theme[0];
+    button.style.padding = "0";
     button.addEventListener("click", () => {
       root.style.setProperty("--background1", theme[0]);
       root.style.setProperty("--background2", theme[1]);
-    })
+      actualTheme = theme;
+      updateOptions();
+    });
+    return button;
+  }));
+  // Sound Effects
+  newQuestionUI.appendChild(createOption("Sound effects:", [false, true], (o: boolean) => {
+    const button = buildElement("div", "option");
+    button.id = o.toString();
+    button.classList.add("option-type-sfx");
+    button.innerText = (o) ? ((lang == 0) ? "Yes" : "Si") : "No";
+    button.addEventListener("click", () => {
+      soundEffects = o;
+      updateOptions();
+    });
+    return button;
+  }));
+  // Invert Clock and Points toggler
+  newQuestionUI.appendChild(createOption("Invert clock and points position:", [false, true], (o: boolean) => {
+    const button = buildElement("div", "option");
+    button.id = o.toString();
+    button.classList.add("option-type-invert");
+    button.innerText = (o) ? ((lang == 0) ? "Yes" : "Si") : "No";
+    button.addEventListener("click", () => {
+      invertClockAndPoints = o;
+      updateOptions();
+    });
+    return button;
+  }));
+  // Language
+  newQuestionUI.appendChild(createOption("Language:", [0, 1], (l: 0 | 1) => {
+    const button = buildElement("div", "option");
+    button.id = l.toString();
+    button.classList.add("option-type-lang");
+    button.innerText = (l == 0) ? "English" : "Español";
+    button.addEventListener("click", () => {
+      lang = l;
+      updateOptions();
+    });
+    return button;
+  }));
+  // Save settings to local storage
+  newQuestionUI.appendChild(createOption("Save settings to local storage", [false, true], (o: boolean) => {
+    const button = buildElement("div", "option");
+    button.id = o.toString();
+    button.classList.add("option-type-save");
+    button.innerText = (o) ? ((lang == 0) ? "Yes" : "Si") : "No";
+    button.addEventListener("click", () => {
+      saveSettings = o;
+      updateOptions();
+    });
     return button;
   }));
   questionsUI = newQuestionUI;
   main?.appendChild(newQuestionUI);
+  updateOptions();
   createMinorButton("back");
 }
 // Returns an options element
@@ -42,4 +89,20 @@ function createOption(optionTitle: string, options: any[], forEachFunction: Func
   // Bar animation
   setTimeout(() => bar.style.opacity = "1", 200);
   return bar;
+}
+// Updates the option selected classes
+function updateOptions() {
+  checkType(".option-type-theme", actualTheme.toString()) // Themes
+  checkType(".option-type-sfx", soundEffects.toString()) // Sound Effects
+  checkType(".option-type-invert", invertClockAndPoints.toString()) // Invert clock and points position
+  checkType(".option-type-lang", lang.toString()) // Language
+  checkType(".option-type-save", saveSettings.toString()) // Save settings to LocalStorage
+  function checkType(typeClass: string, checkString: string) {
+    const typeCheck = document.querySelectorAll(typeClass);
+    console.log(document.querySelectorAll(".option-type-save"));
+    typeCheck.forEach(el => {
+      if (el.id == checkString) el.classList.add("option-selected");
+      else el.classList.toggle("option-selected", false);
+    });
+  }
 }

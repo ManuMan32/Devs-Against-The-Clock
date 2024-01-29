@@ -13,7 +13,7 @@ function buildElement(type: string, eClass: string | null = null, eText: string 
 // Create Screen Functions
 function createTitleScreen() {
   if (document.querySelector("#questions-ui") == null) {
-    createClock();
+    (invertClockAndPoints) ? createFooter() : createClock();
     const newQuestionUI = buildElement("section");
     newQuestionUI.id = "questions-ui";
     const newTitle = buildElement("div", "title");
@@ -27,7 +27,7 @@ function createTitleScreen() {
     newQuestionUI.appendChild(credits);
     questionsUI = newQuestionUI;
     main?.appendChild(newQuestionUI);
-    createFooter();
+    (invertClockAndPoints) ? createClock() : createFooter();
   }
   const h1 = buildElement("h1", "screen-reader");
   const img = document.createElement("img");

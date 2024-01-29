@@ -19,7 +19,6 @@ const enum MenuScreens {
 }
 let actualScreen: MenuScreens = MenuScreens.Title;
 let gamePlaying = false;
-let lang: 0 | 1 = 0;
 let correctLang: string = "Correct!";
 let incorrectLang: string = "Incorrect!";
 const recentQuestionsQueue: number[] = [];
@@ -36,6 +35,21 @@ let decrementTime = 3;
 let points = 0;
 let correctAnswers = 0;
 let totalAnswers = 0;
+
+const themes: [string, string][] = [
+  ["#6b6b6b44", "#dedede44"],
+  ["#995500af", "#bb6600af"],
+  ["#559900af", "#66bb00af"],
+  ["#5599aaaf", "#66bbccaf"],
+  ["#9955aaaf", "#bb66ccaf"]
+]
+
+// Options
+let actualTheme: [string, string] = themes[0];
+let soundEffects = true;
+let invertClockAndPoints = false;
+let lang: 0 | 1 = 0;
+let saveSettings = true;
 
 // General Functions
 // Clears all childrens of an element

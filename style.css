@@ -360,6 +360,8 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   align-items: center;
   flex: 1;
   font-size: 20px;
+  text-align: center;
+  padding: 0 30px;
 }
 .options-div {
   display: flex;
@@ -368,10 +370,25 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   flex: 2;
 }
 .option {
-  width: 30px;
-  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
   background-color: var(--button-color-focus);
   border-radius: 10px;
+  border: 2px solid #000;
+  color: #fff;
+  padding: 0 40px;
+  user-select: none;
+}
+.option:hover {
+  cursor: pointer;
+  border-color: #444;
+}
+.option-selected {
+  outline: 2px solid #222;
+  outline-offset: 5px;
 }
 
   /* ---- Miscellaneous classes ---- */
