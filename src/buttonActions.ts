@@ -19,6 +19,17 @@ buttonPlay?.addEventListener("click", buttonPlayFunction);
 function buttonPlayFunction(this: HTMLElement) {
   if (!this.classList.contains("button-blocked")) clearScreen(1250, createDifficultiesScreen, MenuScreens.Difficulties);
 }
+const buttonSettings: HTMLElement | null = document.getElementById("button-settings");
+buttonSettings?.addEventListener("click", buttonSettingsFunction);
+function buttonSettingsFunction(this: HTMLElement) {
+  if (!this.classList.contains("button-blocked")) {
+    clearScreen(1250, void 0, MenuScreens.Settings);
+    setTimeout(() => {
+      clearElement(main);
+      createSettingsMenu();
+    }, 1250);
+  }
+}
 
 // Back button
 function createMinorButton(type: "back" | "info", infoContent: string = "") {
@@ -53,6 +64,9 @@ function backButtonAction(this: HTMLElement) {
       if (qContainer) qContainer.style.opacity = "0";
       const infoButton: HTMLElement | null = document.querySelector(".button-info");
       infoButton?.remove();
+    case MenuScreens.Settings:
+      const options: NodeListOf<HTMLElement> = document.querySelectorAll(".options-bar");
+      if (options) options.forEach(i => i.style.opacity = "0");
       clearScreen(800, void 0, MenuScreens.Title);
       setTimeout(() => clearElement(main), 800);
       setTimeout(() => createTitleScreen(), 800);

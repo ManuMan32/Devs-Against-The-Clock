@@ -3,6 +3,7 @@
 // General Script
 
 // Variables
+const root = document.documentElement;
 const main = document.getElementById("screen");
 let questionsUI: HTMLElement | null = document.getElementById("questions-ui");
 let footerUI: HTMLElement | null = document.getElementById("footer-ui");
@@ -11,6 +12,7 @@ let buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
 const enum MenuScreens {
   Title = "title",
   QuestionsList = "questionslist",
+  Settings = "settings",
   Difficulties = "difficulties",
   Question = "question",
   GameOver = "gameover"

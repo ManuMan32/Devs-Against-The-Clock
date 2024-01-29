@@ -55,7 +55,7 @@ function createTitleScreen() {
   if (buttonsRow) {
     buttonsRow.appendChild(createButtonTitle("button-questions", "icons/questions.svg", "Questions", buttonQuestionsFunction));
     buttonsRow.appendChild(createButtonTitle("button-play", "icons/play.svg", "Play", buttonPlayFunction));
-    buttonsRow.appendChild(createButtonTitle("button-settings", "icons/settings.svg", "Settings"));
+    buttonsRow.appendChild(createButtonTitle("button-settings", "icons/settings.svg", "Settings", buttonSettingsFunction));
     buttonsRow.style.opacity = "1"
   }
 }
