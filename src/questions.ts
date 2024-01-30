@@ -739,211 +739,207 @@ questions.push(createQuestion (
   '0',
   ["-1","0.0000001","1"]
 ));
-
-// console.log Questions
-// 0
-questions.push(createQuestion (
-  (lang == 0) ? "If I run 'console.log(true + true)' what will the console show me?" : "Si ejecuto 'console.log(true + true)' ¿Qué me mostrará la consola?",
-  "2",
-  ["true","1","NaN"]
-));
-// 1
-questions.push(createQuestion (
-  (lang == 0) ? "If I run 'console.log(!4)' what will the console show me?" : "Si ejecuto 'console.log(!4)' ¿Qué me mostrará la consola?",
-  "false",
-  ["-4","TypeError","24"]
-));
-// 2
-questions.push(createQuestion (
-  (lang == 0) ? `If I run 'console.log(2 == "2")' what will the console show me?` : `Si ejecuto 'console.log(2 == '2')' ¿Qué me mostrará la consola?`,
-  "true",
-  ["false","NaN"]
-));
-// 3
-questions.push(createQuestion (
-  (lang == 0) ? `If I run 'console.log(parseInt("25.5"))' what will the console show me?` : `Si ejecuto 'console.log(parseInt("25.5"))' ¿Qué me mostrará la consola?`,
-  "25",
-  ["25.5","5","0.5"]
-));
-// 4
-questions.push(createQuestion (
-  (lang == 0) ? "If I run 'console.log((false).toString())' what will the console show me?" : "Si ejecuto 'console.log((false).toString())' ¿Qué me mostrará la consola?",
-  "'false'",
-  ["0","TypeError","true"]
-));
-// 5
-questions.push(createQuestion (
-  (lang == 0) ? `If I run 'console.log("5" * "a")' what will the console show me?` : `Si ejecuto 'console.log("5" * "a")' ¿Qué me mostrará la consola?`,
-  "NaN",
-  ["TypeError","5a","5"]
-));
-// 6
-questions.push(createQuestion (
-  (lang == 0) ? `If I run 'console.log(typeof typeof 4)' what will the console show me?` : `Si ejecuto 'console.log(typeof typeof 4)' ¿Qué me mostrará la consola?`,
-  "string",
-  ["function ()","number","4"]
-));
-// 7
-questions.push(createQuestion (
-  (lang == 0) ? `If I run 'console.log(typeof {})' what will the console show me?` : `Si ejecuto 'console.log(typeof {})' ¿Qué me mostrará la consola?`,
-  "object",
-  ["number","array","string"]
-));
-// 8
-questions.push(createQuestion (
-  (lang == 0) ? `If I run 'console.log([] == false)' what will the console show me?` : `Si ejecuto 'console.log([] == false)' ¿Qué me mostrará la consola?`,
-  "true",
-  ["[]","false","NaN"]
-));
-// 9
-questions.push(createQuestion (
-  (lang == 0) ? `If I run 'console.log({} === {})' what will the console show me?` : `Si ejecuto 'console.log({} === {})' ¿Qué me mostrará la consola?`,
-  "false",
-  ["true","NaN","{}"]
-));
-// 10
-questions.push(createQuestion (
-  (lang == 0) ? `If I run 'console.log(0.999 === 1)' what will the console show me?` : `Si ejecuto 'console.log(0.999 === 1)' ¿Qué me mostrará la consola?`,
-  "false",
-  ["TypeError","1","true"]
-));
-// 11
-questions.push(createQuestion (
-  (lang == 0) ? `If I run 'console.log(5 * "5")' what will the console show me?` : `Si ejecuto 'console.log(5 * "5")' ¿Qué me mostrará la consola?`,
-  "25",
-  ["55","NaN","5"]
-));
-
-// General Programming Questions
-// 0
+// 40
 questions.push(createQuestion (
   (lang == 0) ? "Which of these is the ternary operator?" : "¿Cuál de estos es el operador ternario?",
   "?",
   ["$","...","&&"]
 ));
-// 1
+// 41
 questions.push(createQuestion (
   (lang == 0) ? "What 'DOM' stands for?" : "¿Qué significa 'DOM'?",
   "Document Object Model",
   ["Document Order Manipulation","Data Order Model","Document Order Model"]
 ));
-// 2
+// 42
 questions.push(createQuestion (
   (lang == 0) ? "Which of these is a string method?" : "¿Cuál de estos es un método de string?",
   "string.split()",
   ["string.reduce()","string.reverse()","string.power()"]
 ));
-// 3
+// 43
 questions.push(createQuestion (
   (lang == 0) ? "What method adds an element to the beginning of an array?" : "¿Qué método agrega un elemento al principio de un array?",
   "unshift",
   ["pop","shift","push"]
 ));
-// 4
+// 44
 questions.push(createQuestion (
   (lang == 0) ? "What method makes an object readonly?" : "¿Qué método hace que un objeto sea readonly?",
   "freeze",
   ["constant","static","setReadOnly"]
 ));
-// 5
+// 45
 questions.push(createQuestion (
   (lang == 0) ? "Which 'display' has a <span> element by default?" : "¿Qué 'display' tiene por defecto un elemento <span>?",
   "inline",
   ["block","inline-block","flex"]
 ));
-// 6
+// 46
 questions.push(createQuestion (
   (lang == 0) ? 'What is the name of the web icon that appears in the browser tab?' : '¿Cómo se llama el icono de la web que aparece en la pestaña del navegador?',
   "favicon",
   ["web icon","image","picture"]
 ));
-// 7
+// 47
 questions.push(createQuestion (
   (lang == 0) ? 'Which of these is a hexadecimal color?' : '¿Cuál de estos es un color hexadecimal?',
   "#44a3cc",
   ["red","hex(3, 7, 9)","rgb(2, 5, 6)"]
 ));
-// 8
+// 48
 questions.push(createQuestion (
   (lang == 0) ? 'What type of data does the "foreach" method work on?' : '¿En qué tipo de dato funciona el método "foreach"?',
   "array",
   ["string","object","date"]
 ));
-// 9
+// 49
 questions.push(createQuestion (
   (lang == 0) ? 'What is the syntax of arrow functions?' : '¿Cuál es la sintaxis de las funciones flecha?',
   "() => {}",
   ["func => {}"," f() ===> ()","function()"]
 ));
-// 10
+// 50
 questions.push(createQuestion (
   (lang == 0) ? "If the arrow functions only have one line, will they return what that line returns?" : "Las funciones flecha, si solo tienen una linea ¿Retonarán lo que devuelva esa linea?.",
   (lang == 0) ? "True" : "Verdadero",
   (lang == 0) ? ["False"] : ["Falso"]
 ));
-// 11
+// 51
 questions.push(createQuestion (
   (lang == 0) ? 'Which method creates an event listener for an object?' : '¿Con qué método se crea un event listener para un objeto?',
   "addEventListener",
   ["actionAdd","event","addEvent"]
 ));
-// 12
+// 52
 questions.push(createQuestion (
   (lang == 0) ? `To create a string, you can use " ", ' ' or...` : `Para crear un string, se puede utilizar " ", ' ' o...`,
   "` `",
   ["! !","${}","* *"]
 ));
-// 13
+// 53
 questions.push(createQuestion (
   (lang == 0) ? "Which of these technologies is NOT framework?" : "¿Cuál de estas tecnologías NO ES un framework?",
   "TypeScript",
   ["React","Bootstrap","Vue"]
 ));
-// 14
+// 54
 questions.push(createQuestion (
   (lang == 0) ? "Using document.write() after a website is loaded will delete all existing HTML" : "Usar document.write() después de que cargue la página web borrará todo el HTML.",
   (lang == 0) ? "True" : "Verdadero",
   (lang == 0) ? ["False"] : ["Falso"]
 ));
-// 15
+// 55
 questions.push(createQuestion (
   (lang == 0) ? 'Which of these texts is camel case?' : '¿Cuál de estos textos es camel case?',
   'camelCase',
   ["camel_case","CamelCase","camel-case"]
 ));
-// 16
+// 56
 questions.push(createQuestion (
   (lang == 0) ? 'What character is used to create a regular expression?' : '¿Qué caracter se usa para crear una expresión regular?',
   '/ /',
   ["* *","| |","- -"]
 ));
-// 17
+// 57
 questions.push(createQuestion (
   (lang == 0) ? 'test() is a method that works with...' : 'test() es un método que funciona con...',
   'reg exp',
   ["arrays","strings","conditions"]
 ));
-// 18
+// 58
 questions.push(createQuestion (
   (lang == 0) ? 'In Regular Expressions, "n+"	matches any string that contains at least one n.' : 'En Expresiones Regulares, "n+" coincide con cualquier string que contenga al menos una n.',
   (lang == 0) ? "True" : "Verdadero",
   (lang == 0) ? ["False"] : ["Falso"]
 ));
-// 19
+// 59
 questions.push(createQuestion (
   (lang == 0) ? 'Which of the following strings matches the following regular expression: /f{3}/?' : '¿Cuál de los siguientes strings coincide con la siguiente expresión regular: /f{3}/?',
   'awffful',
   ["foffo","ffinff","financial freedom"]
 ));
-// 20
+// 60
 questions.push(createQuestion (
   (lang == 0) ? 'What type of data are "Dates" in JavaScript?' : '¿Qué tipo de dato son las "Dates" en JavaScript?',
   'object',
   ["array","date","string"]
 ));
-// 21
+// 61
 questions.push(createQuestion (
   (lang == 0) ? 'Which of these is NOT a property of the Math object in JavaScript?' : '¿Cuál de estas NO es una propiedad del objeto Math en JavaScript?',
   'Math.ZERO',
   ["Math.E","Math.PI","Math.SQRT2"]
+));
+// 62
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log(true + true)' what will the console show me?" : "Si ejecuto 'console.log(true + true)' ¿Qué me mostrará la consola?",
+  "2",
+  ["true","1","NaN"]
+));
+// 63
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log(!4)' what will the console show me?" : "Si ejecuto 'console.log(!4)' ¿Qué me mostrará la consola?",
+  "false",
+  ["-4","TypeError","24"]
+));
+// 64
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(2 == "2")' what will the console show me?` : `Si ejecuto 'console.log(2 == '2')' ¿Qué me mostrará la consola?`,
+  "true",
+  ["false","NaN"]
+));
+// 65
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(parseInt("25.5"))' what will the console show me?` : `Si ejecuto 'console.log(parseInt("25.5"))' ¿Qué me mostrará la consola?`,
+  "25",
+  ["25.5","5","0.5"]
+));
+// 66
+questions.push(createQuestion (
+  (lang == 0) ? "If I run 'console.log((false).toString())' what will the console show me?" : "Si ejecuto 'console.log((false).toString())' ¿Qué me mostrará la consola?",
+  "'false'",
+  ["0","TypeError","true"]
+));
+// 67
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log("5" * "a")' what will the console show me?` : `Si ejecuto 'console.log("5" * "a")' ¿Qué me mostrará la consola?`,
+  "NaN",
+  ["TypeError","5a","5"]
+));
+// 68
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(typeof typeof 4)' what will the console show me?` : `Si ejecuto 'console.log(typeof typeof 4)' ¿Qué me mostrará la consola?`,
+  "string",
+  ["function ()","number","4"]
+));
+// 69
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(typeof {})' what will the console show me?` : `Si ejecuto 'console.log(typeof {})' ¿Qué me mostrará la consola?`,
+  "object",
+  ["number","array","string"]
+));
+// 70
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log([] == false)' what will the console show me?` : `Si ejecuto 'console.log([] == false)' ¿Qué me mostrará la consola?`,
+  "true",
+  ["[]","false","NaN"]
+));
+// 71
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log({} === {})' what will the console show me?` : `Si ejecuto 'console.log({} === {})' ¿Qué me mostrará la consola?`,
+  "false",
+  ["true","NaN","{}"]
+));
+// 72
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(0.999 === 1)' what will the console show me?` : `Si ejecuto 'console.log(0.999 === 1)' ¿Qué me mostrará la consola?`,
+  "false",
+  ["TypeError","1","true"]
+));
+// 73
+questions.push(createQuestion (
+  (lang == 0) ? `If I run 'console.log(5 * "5")' what will the console show me?` : `Si ejecuto 'console.log(5 * "5")' ¿Qué me mostrará la consola?`,
+  "25",
+  ["55","NaN","5"]
 ));
