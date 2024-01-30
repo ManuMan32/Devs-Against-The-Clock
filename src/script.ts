@@ -40,9 +40,9 @@ let totalAnswers = 0;
 // SFX
 type sfx = HTMLAudioElement | null;
 const SFXClick: sfx = document.querySelector("#SFXclick");
-const SFXClock: sfx = document.querySelector("audio #SFXclock");
-const SFXCorrect: sfx = document.querySelector("audio #SFXcorrect");
-const SFXIncorrect: sfx = document.querySelector("audio #SFXincorrect");
+const SFXClock: sfx = document.querySelector("#SFXclock");
+const SFXCorrect: sfx = document.querySelector("#SFXcorrect");
+const SFXIncorrect: sfx = document.querySelector("#SFXincorrect");
 
 // Options
 const themes: [string, string][] = [

@@ -18,9 +18,11 @@ function requestAnswer(value: boolean): void {
     modifyTime(incrementTime, "add");
     points += 100;
     correctAnswers++;
+    sfx(SFXCorrect, "play");
   } else {
     modifyTime(decrementTime, "subtract");
     points -= 50;
+    sfx(SFXIncorrect, "play");
   }
   totalAnswers++;
   refreshUI();

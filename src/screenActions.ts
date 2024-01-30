@@ -87,6 +87,7 @@ function createDifficultiesScreen() {
 }
 function createQuestionScreen(id: number) {
   if (!gamePlaying) return;
+  sfx(SFXClock, "play");
   // Gets the text
   const questionAnswer: string = questions[id].answer;
   const questionOptions: string[] = questions[id].options;
@@ -110,6 +111,7 @@ function createQuestionScreen(id: number) {
         const response: boolean = checkAnswer(this, id);
         this.classList.add((response) ? "button-blocked-correct" : "button-blocked-incorrect");
         requestAnswer(response);
+        sfx(SFXClock, "stop");
       }
     } );
     buttons.push(button);

@@ -54,6 +54,8 @@ function timeIsOut() {
     setTimeout(() => { if (title) title.style.animation = "none" }, 1100);
   }
   clearScreen(1900, createGameOverScreen, MenuScreens.GameOver);
+  sfx(SFXIncorrect, "play");
+  sfx(SFXClock, "stop");
 }
 
 updateClock();
