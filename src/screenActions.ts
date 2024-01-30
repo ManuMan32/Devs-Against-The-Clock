@@ -21,7 +21,7 @@ function createTitleScreen() {
     const newButtonsRow = buildElement("div", "buttons-row");
     buttonsRow = newButtonsRow;
     const credits = buildElement("span", "credits");
-    credits.innerHTML = `Page made by <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a>`;
+    credits.innerHTML = ((lang == 0) ? `Page made by` : `Página hecha por`) + ` <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a>`;
     newQuestionUI.appendChild(newTitle);
     newQuestionUI.appendChild(newButtonsRow);
     newQuestionUI.appendChild(credits);
@@ -127,9 +127,9 @@ function createQuestionScreen(id: number) {
 function createGameOverScreen() {
   if (title) title.innerText = (lang == 0) ? "Time is out!" : "¡Se acabó el tiempo!";
   const scores = [
-    `Points: ${points}`,
-    `Correct: ${correctAnswers}`,
-    `Incorrect: ${totalAnswers - correctAnswers}`
+    (lang == 0) ? `Points: ${points}` : `Puntos: ${points}`,
+    (lang == 0) ? `Correct: ${correctAnswers}` : `Correctas: ${correctAnswers}`,
+    (lang == 0) ? `Incorrect: ${totalAnswers - correctAnswers}` : `Incorrectas: ${totalAnswers - correctAnswers}`
   ];
   scores.forEach(txt => {
     const span = buildElement("span", "ui-text", txt);
@@ -160,9 +160,9 @@ function createFooter(): void {
   const footer = buildElement("footer");
   footer.id = "footer-ui";
   const pointCounter = buildElement("span", "ui-text");
-  pointCounter.innerHTML = `Points: <span id="points">0</span>`;
+  pointCounter.innerHTML = ((lang == 0 ) ? `Points:` : `Puntos:`) + ` <span id="points">0</span>`;
   const answersCounter = buildElement("span", "ui-text");
-  answersCounter.innerHTML = `Correct answers: <span id="correct-answers">0</span> / <span id="total-answers">0</span>`;
+  answersCounter.innerHTML = ((lang == 0) ? `Correct answers:` : `Respuestas correctas:`) + ` <span id="correct-answers">0</span> / <span id="total-answers">0</span>`;
   footer.appendChild(pointCounter);
   footer.appendChild(answersCounter);
   footerUI = footer;

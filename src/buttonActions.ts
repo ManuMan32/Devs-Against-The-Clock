@@ -6,13 +6,12 @@
 function addLangButtonFunction(element: HTMLElement, langSet: 0 | 1): void {
   if (!element.classList.contains("button-blocked")) {
     element.addEventListener("click", () => {
-      lang = langSet;
       if (title) title.style.opacity = "0";
       if (buttonsRow) buttonsRow.style.opacity = "0";
       clearScreen(800, void 0, MenuScreens.Title);
       setTimeout(() => clearElement(main), 800);
       setTimeout(() => createTitleScreen(), 800);
-      loadQuestions();
+      changeLanguage(langSet);
     });
   }
 }
@@ -58,7 +57,10 @@ function createMinorButton(type: "back" | "info", infoContent: string = "") {
     mButton.appendChild(img);
   } else {
     mButton.classList.add("button-info");
-    mButton.addEventListener("click", () => { if (title) title.innerText = infoContent });
+    mButton.addEventListener("click", () => { if (title) {
+      title.innerText = infoContent;
+      title.style.fontSize = "30px"; 
+    }});
     mButton.innerText = "i";
   }
   questionsUI?.appendChild(mButton);

@@ -7,7 +7,7 @@ function createSettingsMenu(): void {
   const newQuestionUI = buildElement("section");
   newQuestionUI.id = "questions-ui";
   // Theme options
-  newQuestionUI.appendChild(createOption("Theme:", themes, (theme: [string, string]) => {
+  newQuestionUI.appendChild(createOption((lang == 0) ? "Theme:" : "Tema:", themes, (theme: [string, string]) => {
     const button = buildElement("div", "option");
     button.id = theme.toString();
     button.classList.add("option-type-theme");
@@ -22,7 +22,7 @@ function createSettingsMenu(): void {
     return button;
   }));
   // Sound Effects
-  newQuestionUI.appendChild(createOption("Sound effects:", [false, true], (o: boolean) => {
+  newQuestionUI.appendChild(createOption((lang == 0) ? "Sound effects:" : "Efectos de sonido:", [false, true], (o: boolean) => {
     const button = buildElement("div", "option");
     button.id = o.toString();
     button.classList.add("option-type-sfx");
@@ -34,7 +34,7 @@ function createSettingsMenu(): void {
     return button;
   }));
   // Invert Clock and Points toggler
-  newQuestionUI.appendChild(createOption("Invert clock and points position:", [false, true], (o: boolean) => {
+  newQuestionUI.appendChild(createOption((lang == 0) ? "Invert clock and points position:" : "Invertir la posición del reloj y los puntos:", [false, true], (o: boolean) => {
     const button = buildElement("div", "option");
     button.id = o.toString();
     button.classList.add("option-type-invert");
@@ -46,7 +46,7 @@ function createSettingsMenu(): void {
     return button;
   }));
   // Language
-  newQuestionUI.appendChild(createOption("Language:", [0, 1], (l: 0 | 1) => {
+  newQuestionUI.appendChild(createOption((lang == 0) ? "Language:" : "Idioma", [0, 1], (l: 0 | 1) => {
     const button = buildElement("div", "option");
     button.id = l.toString();
     button.classList.add("option-type-lang");
@@ -58,7 +58,7 @@ function createSettingsMenu(): void {
     return button;
   }));
   // Save settings to local storage
-  newQuestionUI.appendChild(createOption("Save settings to local storage", [false, true], (o: boolean) => {
+  newQuestionUI.appendChild(createOption((lang == 0) ? "Save settings:" : "Guardar configuración:", [false, true], (o: boolean) => {
     const button = buildElement("div", "option");
     button.id = o.toString();
     button.classList.add("option-type-save");
