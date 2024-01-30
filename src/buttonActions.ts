@@ -68,6 +68,8 @@ function backButtonAction(this: HTMLElement) {
     case MenuScreens.GameOver:
       const icon = document.querySelector(".title-animation");
       icon?.remove();
+      resetGame();
+      refreshUI();
     case MenuScreens.Difficulties:
       clearScreen(800, createTitleScreen, MenuScreens.Title);
       break;

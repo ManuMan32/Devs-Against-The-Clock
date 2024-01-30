@@ -80,6 +80,11 @@ function refreshUI() {
   if (correctAnswersSpan) correctAnswersSpan.innerText = correctAnswers.toString();
   if (totalAnswersSpan) totalAnswersSpan.innerText = totalAnswers.toString();
 }
+function resetGame() {
+  points = 0;
+  totalAnswers = 0;
+  correctAnswers = 0;
+}
 function changeLanguage(value: 0 | 1): void {
   lang = value;
   correctLang = (lang == 0) ? "Correct!" : "Correcto!";
