@@ -77,6 +77,7 @@ function createDifficultiesScreen() {
           createQuestionScreen(Math.floor(Math.random() * questions.length));
           createTimerInterval();
         }, MenuScreens.Question);
+        sfx(SFXClick, "play");
       }
     })
     buttonsRow?.appendChild(difficultyButton);
@@ -89,11 +90,9 @@ function createQuestionScreen(id: number) {
   // Gets the text
   const questionAnswer: string = questions[id].answer;
   const questionOptions: string[] = questions[id].options;
-
   // Creates the principal elements
   (title) ? title.innerText = questions[id].statement : void 0;
   const questionButtons: HTMLElement | null = document.querySelector(".buttons-row");
-
   // Creates the option buttons
   const buttons: HTMLElement[] = [];
   const rightAnswer: number = Math.floor(Math.random() * (questionOptions.length + 1));

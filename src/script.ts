@@ -37,6 +37,14 @@ let points = 0;
 let correctAnswers = 0;
 let totalAnswers = 0;
 
+// SFX
+type sfx = HTMLAudioElement | null;
+const SFXClick: sfx = document.querySelector("#SFXclick");
+const SFXClock: sfx = document.querySelector("audio #SFXclock");
+const SFXCorrect: sfx = document.querySelector("audio #SFXcorrect");
+const SFXIncorrect: sfx = document.querySelector("audio #SFXincorrect");
+
+// Options
 const themes: [string, string][] = [
   ["#6b6b6b44", "#dedede44"],
   ["#995500af", "#bb6600af"],
@@ -44,8 +52,6 @@ const themes: [string, string][] = [
   ["#5599aaaf", "#66bbccaf"],
   ["#9955aaaf", "#bb66ccaf"]
 ]
-
-// Options
 let actualTheme: [string, string] = themes[0];
 let soundEffects = true;
 let invertClockAndPoints = false;
@@ -84,6 +90,13 @@ function resetGame() {
   points = 0;
   totalAnswers = 0;
   correctAnswers = 0;
+}
+function sfx(audio: sfx, action: "play" | "stop"): void {
+  if (audio && soundEffects) {
+    if (action == "play") audio.play();
+    else audio.pause();
+    audio.currentTime = 0;
+  }
 }
 function changeLanguage(value: 0 | 1): void {
   lang = value;

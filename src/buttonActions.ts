@@ -12,6 +12,7 @@ function addLangButtonFunction(element: HTMLElement, langSet: 0 | 1): void {
       setTimeout(() => clearElement(main), 800);
       setTimeout(() => createTitleScreen(), 800);
       changeLanguage(langSet);
+      sfx(SFXClick, "play");
     });
   }
 }
@@ -28,10 +29,14 @@ function buttonQuestionsFunction(this: HTMLElement) {
       clearElement(main);
       createQuestionsMenu();
     }, 1250);
+    sfx(SFXClick, "play");
   }
 }
 function buttonPlayFunction(this: HTMLElement) {
-  if (!this.classList.contains("button-blocked")) clearScreen(1250, createDifficultiesScreen, MenuScreens.Difficulties);
+  if (!this.classList.contains("button-blocked")) {
+    clearScreen(1250, createDifficultiesScreen, MenuScreens.Difficulties);
+    sfx(SFXClick, "play");
+  }
 }
 function buttonSettingsFunction(this: HTMLElement) {
   if (!this.classList.contains("button-blocked")) {
@@ -40,6 +45,7 @@ function buttonSettingsFunction(this: HTMLElement) {
       clearElement(main);
       createSettingsMenu();
     }, 1250);
+    sfx(SFXClick, "play");
   }
 }
 
@@ -60,6 +66,7 @@ function createMinorButton(type: "back" | "info", infoContent: string = "") {
     mButton.addEventListener("click", () => { if (title) {
       title.innerText = infoContent;
       title.style.fontSize = "30px"; 
+      sfx(SFXClick, "play");
     }});
     mButton.innerText = "i";
   }
@@ -89,5 +96,6 @@ function backButtonAction(this: HTMLElement) {
       setTimeout(() => createTitleScreen(), 800);
       break;
   }
+  sfx(SFXClick, "play");
   this.remove();
 }

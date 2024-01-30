@@ -17,7 +17,10 @@ function createQuestionsMenu(): void {
   leftButton.type = "button";
   leftButton.classList.add("button-left");
   leftButton.addEventListener("click", function() {
-    if (!this.classList.contains("button-blocked")) newPage(-1);
+    if (!this.classList.contains("button-blocked")) {
+      newPage(-1);
+      sfx(SFXClick, "play");
+    }
   });
   const lImgButton = document.createElement("img");
   lImgButton.classList.add("button-icon");
@@ -35,7 +38,10 @@ function createQuestionsMenu(): void {
   rightButton.type = "button";
   rightButton.classList.add("button-right");
   rightButton.addEventListener("click", function() {
-    if (!this.classList.contains("button-blocked")) newPage(1);
+    if (!this.classList.contains("button-blocked")) {
+      newPage(1);
+      sfx(SFXClick, "play");
+    }
   });
   const rImgButton = document.createElement("img");
   rImgButton.classList.add("button-icon");
