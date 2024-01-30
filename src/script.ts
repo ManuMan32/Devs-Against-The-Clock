@@ -10,6 +10,7 @@ let footerUI: HTMLElement | null = document.getElementById("footer-ui");
 let title: HTMLElement | null = document.querySelector(".title");
 let buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
 const enum MenuScreens {
+  LanguageSelect = "languageselect",
   Title = "title",
   QuestionsList = "questionslist",
   Settings = "settings",
@@ -61,6 +62,16 @@ function clearElement(element: Element | HTMLElement | null): void {
     }
   }
 }
+// Reload questions, used for language settings
+function loadQuestions() {
+  // Deletes the previous question script if it exists
+  const prevScript = document.querySelector('script[src="dist/questions.js"]');
+  if (prevScript) prevScript.remove();
+  // Creates a new questions script
+  const questionsScript = document.createElement("script");
+  questionsScript.src = "dist/questions.js";
+  document.body.appendChild(questionsScript);
+}
 function refreshUI() {
   const pointsSpan = document.getElementById("points");
   const correctAnswersSpan = document.getElementById("correct-answers");
@@ -73,6 +84,7 @@ function changeLanguage(value: 0 | 1): void {
   lang = value;
   correctLang = (lang == 0) ? "Correct!" : "Correcto!";
   incorrectLang = (lang == 0) ? "Incorrect!" : "Incorrecto!";
+  loadQuestions();
 }
 function changeDifficulty(index: Difficulty) {
   switch (index) {

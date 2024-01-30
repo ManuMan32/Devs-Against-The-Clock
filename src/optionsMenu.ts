@@ -99,7 +99,6 @@ function updateOptions() {
   checkType(".option-type-save", saveSettings.toString()) // Save settings to LocalStorage
   function checkType(typeClass: string, checkString: string) {
     const typeCheck = document.querySelectorAll(typeClass);
-    console.log(document.querySelectorAll(".option-type-save"));
     typeCheck.forEach(el => {
       if (el.id == checkString) el.classList.add("option-selected");
       else el.classList.toggle("option-selected", false);

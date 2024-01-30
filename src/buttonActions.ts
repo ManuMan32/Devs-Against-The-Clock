@@ -2,9 +2,26 @@
 // Script written by Manuel Crocco
 // Button Events Listeners
 
+// Language button
+function addLangButtonFunction(element: HTMLElement, langSet: 0 | 1): void {
+  if (!element.classList.contains("button-blocked")) {
+    element.addEventListener("click", () => {
+      lang = langSet;
+      if (title) title.style.opacity = "0";
+      if (buttonsRow) buttonsRow.style.opacity = "0";
+      clearScreen(800, void 0, MenuScreens.Title);
+      setTimeout(() => clearElement(main), 800);
+      setTimeout(() => createTitleScreen(), 800);
+      loadQuestions();
+    });
+  }
+}
+const englishButton: HTMLElement | null = document.getElementById("button-english");
+const spanishButton: HTMLElement | null = document.getElementById("button-spanish");
+if (englishButton) addLangButtonFunction(englishButton, 0);
+if (spanishButton) addLangButtonFunction(spanishButton, 1);
+
 // Title buttons
-const buttonQuestions: HTMLElement | null = document.getElementById("button-questions");
-buttonQuestions?.addEventListener("click", buttonQuestionsFunction);
 function buttonQuestionsFunction(this: HTMLElement) {
   if (!this.classList.contains("button-blocked")) {
     clearScreen(1250, void 0, MenuScreens.QuestionsList);
@@ -14,13 +31,9 @@ function buttonQuestionsFunction(this: HTMLElement) {
     }, 1250);
   }
 }
-const buttonPlay: HTMLElement | null = document.getElementById("button-play");
-buttonPlay?.addEventListener("click", buttonPlayFunction);
 function buttonPlayFunction(this: HTMLElement) {
   if (!this.classList.contains("button-blocked")) clearScreen(1250, createDifficultiesScreen, MenuScreens.Difficulties);
 }
-const buttonSettings: HTMLElement | null = document.getElementById("button-settings");
-buttonSettings?.addEventListener("click", buttonSettingsFunction);
 function buttonSettingsFunction(this: HTMLElement) {
   if (!this.classList.contains("button-blocked")) {
     clearScreen(1250, void 0, MenuScreens.Settings);
