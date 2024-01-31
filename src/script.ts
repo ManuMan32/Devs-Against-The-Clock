@@ -9,6 +9,8 @@ let questionsUI: HTMLElement | null = document.getElementById("questions-ui");
 let footerUI: HTMLElement | null = document.getElementById("footer-ui");
 let title: HTMLElement | null = document.querySelector(".title");
 let buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
+let clock: HTMLElement | null = document.querySelector(".clock");
+let clockBar: HTMLElement | null = document.querySelector(".clock-bar");
 const enum MenuScreens {
   LanguageSelect = "languageselect",
   Title = "title",

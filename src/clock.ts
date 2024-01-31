@@ -3,8 +3,6 @@
 // Script that controls the functionality of the clock
 
 // Variables
-let clock: HTMLElement | null = document.querySelector(".clock");
-let clockBar: HTMLElement | null = document.querySelector(".clock-bar");
 let maxTime = 30;
 let time = 30;
 let timerStarted = false;

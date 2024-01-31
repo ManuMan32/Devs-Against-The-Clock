@@ -2,6 +2,13 @@
 // Script written by Manuel Crocco
 // Functions that manage the game's screen
 
+// Checks if the game has been played before, then destroys lang screen and cretes title screen
+if (playedBefore) {
+  clearElement(main);
+  createTitleScreen();
+  window.addEventListener("load", loadQuestions);
+}
+
 // Principal builder function
 function buildElement(type: string, eClass: string | null = null, eText: string = ""): HTMLElement {
   const e: HTMLElement = document.createElement(type);
@@ -21,7 +28,8 @@ function createTitleScreen() {
     const newButtonsRow = buildElement("div", "buttons-row");
     buttonsRow = newButtonsRow;
     const credits = buildElement("span", "credits");
-    credits.innerHTML = ((lang == 0) ? `Page made by` : `Página hecha por`) + ` <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a>`;
+    // This uses local storage instead of the lang variable because at this points page hasn't loaded yet
+    credits.innerHTML = ((localStorage.getItem("DATClang") == "1") ? `Página hecha por` : `Page made by`)  + ` <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a>`;
     newQuestionUI.appendChild(newTitle);
     newQuestionUI.appendChild(newButtonsRow);
     newQuestionUI.appendChild(credits);
