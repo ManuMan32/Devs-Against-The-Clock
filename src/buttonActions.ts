@@ -65,7 +65,7 @@ function createMinorButton(type: "back" | "info", infoContent: string = "") {
     mButton.classList.add("button-info");
     mButton.addEventListener("click", () => { if (title) {
       title.innerText = infoContent;
-      title.style.fontSize = "30px"; 
+      title.classList.add("info-text");
       sfx(SFXClick, "play");
     }});
     mButton.innerText = "i";

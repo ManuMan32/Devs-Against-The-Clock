@@ -38,11 +38,13 @@ function createTitleScreen() {
     (invertClockAndPoints) ? createClock() : createFooter();
   }
   const h1 = buildElement("h1", "screen-reader");
+  h1.innerText = "Devs Against The Clock";
   const img = document.createElement("img");
   img.id = "logo";
   img.src = "logo.png";
   img.alt = "Devs Against The Clock Logo";
   img.style.animation = "1s ease forwards appearLogo";
+  h1.style.animation = "1s ease forwards appearLogo";
   if (title) {
     title.appendChild(h1);
     title.appendChild(img);
@@ -142,6 +144,7 @@ function createGameOverScreen() {
   ];
   scores.forEach(txt => {
     const span = buildElement("span", "ui-text", txt);
+    if (txt.startsWith("Points")) span.classList.add("points-ui"); // Used for media queries
     if (buttonsRow) buttonsRow.appendChild(span);
   });
   if (buttonsRow) buttonsRow.style.opacity = "1";
@@ -213,7 +216,9 @@ function clearAnimation(isTitle: boolean = false): void {
   }
   if (isTitle) {
     const logo: HTMLElement | null = document.getElementById("logo");
+    const androidLogo: HTMLElement | null = document.querySelector(".screen-reader");
     if (logo) logo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
+    if (androidLogo) androidLogo.style.animation = "0.9s cubic-bezier(.36,-0.62,.74,.27) forwards disappearLogo";
   } else {
     (title) ? title.innerText = "" : void 0;
   }

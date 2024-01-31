@@ -76,10 +76,10 @@ function buildQuestionsList(): DocumentFragment {
       const hasQuestion = (object.hasOwnProperty("appear")); // Checks if you answered the question before
       const q = buildElement("div", "question");
       const qId = buildElement("span", "question-id", (id + 1).toString());
-      const qTitle = buildElement("span", "question-title", (hasQuestion) ? object.statement : "???");
+      const qTitle = buildElement("span", "question-title", (!hasQuestion) ? object.statement : "???");
       q.appendChild(qId);
       q.appendChild(qTitle);
-      if (hasQuestion) {
+      if (!hasQuestion) {
         // If you answered the question before, the options are shown
         const qOptions = buildElement("div", "question-options");
         const qRightAnswer = buildElement("span", "question-option", object.answer);
