@@ -14,13 +14,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- SFX -->
-    <audio id="SFXclick" src="sfx/click.wav" preload="auto"></audio>
-    <audio id="SFXclock" src="sfx/clock.wav" preload="auto"></audio>
-    <audio id="SFXcorrect" src="sfx/correct.wav" preload="auto"></audio>
-    <audio id="SFXincorrect" src="sfx/incorrect.wav" preload="auto"></audio>
-    
+    <!-- Loading Screen -->
+    <script src="dist/loadingScreen.js"></script>
     <main id="screen">
+      <!-- SFX -->
+      <audio id="SFXclick" src="sfx/click.wav" preload="auto"></audio>
+      <audio id="SFXclock" src="sfx/clock.wav" preload="auto"></audio>
+      <audio id="SFXcorrect" src="sfx/correct.wav" preload="auto"></audio>
+      <audio id="SFXincorrect" src="sfx/incorrect.wav" preload="auto"></audio>
+      <!-- Language Screen -->
       <section id="questions-ui">
         <div class="title">Select Language</div>
         <div class="buttons-row">
@@ -28,35 +30,6 @@
           <button id="button-spanish" type="button" class="button-option">Spanish</button>
         </div>
       </section>
-      <!--
-      <header id="clock-ui">
-        <div class="clock">
-          <div class="clock-bar"></div>
-        </div>
-      </header>
-      <section id="questions-ui">
-        <div class="title">
-          <h1 class="screen-reader">Devs Against The Clock</h1>
-          <img id="logo" src="logo.png" alt="Devs Against The Clock Logo">
-        </div>
-        <div class="buttons-row">
-          <button type="button" class="button-menu" id="button-questions">
-            <img class="button-icon" src="icons/questions.svg" alt="Questions">
-          </button>
-          <button type="button" class="button-menu" id="button-play">
-            <img class="button-icon" src="icons/play.svg" alt="Play">
-          </button>
-          <button type="button" class="button-menu" id="button-settings">
-            <img class="button-icon" src="icons/settings.svg" alt="Settings">
-          </button>
-        </div>
-        <span class="credits">Page made by <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a></span>
-      </section>
-      <footer id="footer-ui">
-        <span class="ui-text">Points: <span id="points">0</span></span>
-        <span class="ui-text">Correct answers: <span id="correct-answers">0</span> / <span id="total-answers">0</span></span>
-      </footer>
-      -->
     </main>
     
     <!-- Main Script -->

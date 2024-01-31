@@ -29,18 +29,18 @@
 body {
   background-color: var(--background2);
   background: repeating-linear-gradient( -45deg, var(--background1), var(--background1) 9.5px, var(--background2) 9.5px, var(--background2) 47.5px );
+  overflow: hidden;
 }
 a { color: var(--text-color); }
 img { user-select: none; -webkit-user-drag: none; }
-
 #screen {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
   padding: 20px;
 }
-
 #questions-ui {
   position: relative;
   display: flex;
@@ -53,7 +53,35 @@ img { user-select: none; -webkit-user-drag: none; }
   box-shadow: 4px 4px var(--text-color);
   text-align: center;
 }
-  /* ---- Main Menu ---- */
+
+/* ---- Load Screen ---- */
+.screen-animation {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  z-index: 99999999;
+}
+.screen-div {
+  background-color: #fff;
+  flex: 1;
+  width: 100%;
+  transition: transform 1s, border .25s;
+}
+.screen-logo {
+  position: absolute;
+  top: 0; left: 0;
+  bottom: 0; right: 0;
+  margin: auto;
+  width: 10%;
+  transform: scale(0);
+  animation: .5s .5s cubic-bezier(.47,1.64,.41,.8) forwards appearLogo;
+  transition: opacity .5s;
+}
+
+/* ---- Main Menu ---- */
 .title {
   display: flex;
   justify-content: center;
