@@ -2,6 +2,8 @@
 // Script written by Manuel Crocco
 // Button Events Listeners
 
+// Hi, if you ever read this code, Manu from the past says that this is the only script on the page that doesn't make any sense. I reviewed it like 4 times and I don't even understand how I could write this ugly code. At least it's experience, I'm not going to do this again XDDD
+
 // Language button
 function addLangButtonFunction(element: HTMLElement, langSet: 0 | 1): void {
   if (!element.classList.contains("button-blocked")) {
@@ -20,7 +22,6 @@ const englishButton: HTMLElement | null = document.getElementById("button-englis
 const spanishButton: HTMLElement | null = document.getElementById("button-spanish");
 if (englishButton) addLangButtonFunction(englishButton, 0);
 if (spanishButton) addLangButtonFunction(spanishButton, 1);
-
 // Title buttons
 function buttonQuestionsFunction(this: HTMLElement) {
   if (!this.classList.contains("button-blocked")) {
@@ -48,7 +49,6 @@ function buttonSettingsFunction(this: HTMLElement) {
     sfx(SFXClick, "play");
   }
 }
-
 // Back button
 function createMinorButton(type: "back" | "info", infoContent: string = "") {
   const mButton: HTMLButtonElement = document.createElement("button");
