@@ -2,11 +2,12 @@
 // Script written by Manuel Crocco
 // Diverse functions that read answers
 
+// Receives a button and the id of the question, returns a boolean depending on whether the button's answer is correct
 function checkAnswer(button: HTMLElement, id: number): boolean {
   const userAnswer: string = button.innerText;
   return userAnswer == questions[id].answer;
 }
-
+// Creates the answer animation
 function requestAnswer(value: boolean): void {
   const answerContainer: HTMLElement = buildElement("div", "answer-container");
   const answer: HTMLElement = buildElement("div", "answer");
@@ -36,14 +37,13 @@ function requestAnswer(value: boolean): void {
   if (buttonsRow) {
     setTimeout(() => { if (buttonsRow) buttonsRow.style.opacity = "1" }, 5);
     setTimeout(() => { if (buttonsRow) buttonsRow.style.opacity = "0" }, (value) ? 500 : 1000);
-    if (!value) {
-      for (let j in buttonsRow.children) {
-        if (parseInt(j).toString() != "NaN") {
-          const val = parseInt(j);
-          const element: HTMLElement | null = document.querySelector(`.buttons-row .button-option:nth-child(${val + 1})`);
-          if (element) {
-            if (element.innerText == questions[actualQuestion].answer) element.classList.add("button-blocked-correct");
-          }
+    // Highlights the correct answer
+    for (let j in buttonsRow.children) {
+      if (parseInt(j).toString() != "NaN") {
+        const val = parseInt(j);
+        const element: HTMLElement | null = document.querySelector(`.buttons-row .button-option:nth-child(${val + 1})`);
+        if (element) {
+          if (element.innerText == questions[actualQuestion].answer) element.classList.toggle("button-blocked-correct", true);
         }
       }
     }
@@ -52,9 +52,11 @@ function requestAnswer(value: boolean): void {
   title?.appendChild(answerContainer);
   setTimeout(() => answerContainer.remove(), 2000);
 }
+// Clears the screen and creates a new question with a random ID
 function nextQuestion(clearTime: number): void {
   clearScreen(clearTime);
   let newId = Math.floor(Math.random() * questions.length)
+  // Checks if the ID is unique and not in the recent questions queue (to not repeat questions)
   while (true) {
     if (recentQuestionsQueue.includes(newId)) newId = Math.floor(Math.random() * questions.length);
     else {
