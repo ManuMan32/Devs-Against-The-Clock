@@ -8,7 +8,6 @@ if (playedBefore) {
   createTitleScreen();
   window.addEventListener("load", loadQuestions);
 }
-
 // Principal builder function
 function buildElement(type: string, eClass: string | null = null, eText: string = ""): HTMLElement {
   const e: HTMLElement = document.createElement(type);
@@ -16,27 +15,16 @@ function buildElement(type: string, eClass: string | null = null, eText: string 
   e.innerText = eText;
   return e;
 }
-
-// Create Screen Functions
-function createTitleScreen() {
+// CREATE SCREEN FUNCTIONS
+// Creates the title screen
+function createTitleScreen(): void {
+  // First checks if questions ui already exists. If not, create it
   if (document.querySelector("#questions-ui") == null) {
     (invertClockAndPoints) ? createFooter() : createClock();
-    const newQuestionUI = buildElement("section");
-    newQuestionUI.id = "questions-ui";
-    const newTitle = buildElement("div", "title");
-    title = newTitle;
-    const newButtonsRow = buildElement("div", "buttons-row");
-    buttonsRow = newButtonsRow;
-    const credits = buildElement("span", "credits");
-    // This uses local storage instead of the lang variable because at this points page hasn't loaded yet
-    credits.innerHTML = ((localStorage.getItem("DATClang") == "1") ? `Página hecha por` : `Page made by`)  + ` <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a>`;
-    newQuestionUI.appendChild(newTitle);
-    newQuestionUI.appendChild(newButtonsRow);
-    newQuestionUI.appendChild(credits);
-    questionsUI = newQuestionUI;
-    main?.appendChild(newQuestionUI);
+    createQuestionsUI();
     (invertClockAndPoints) ? createClock() : createFooter();
   }
+  // Title and logo
   const h1 = buildElement("h1", "screen-reader");
   h1.innerText = "Devs Against The Clock";
   const img = document.createElement("img");
@@ -49,6 +37,7 @@ function createTitleScreen() {
     title.appendChild(h1);
     title.appendChild(img);
   }
+  // This function creates buttons for the title screen
   function createButtonTitle(buttonId: string, imgSrc: string, imgAlt: string, buttonFunction: VoidFunction = () => console.log("This button doesn't have any functionality yet.")): HTMLElement {
     const button = document.createElement("button");
     button.classList.add("button-menu");
@@ -62,6 +51,7 @@ function createTitleScreen() {
     button.appendChild(buttonIcon);
     return button;
   }
+  // Uses the previous function to create the buttons in buttonsRow
   if (buttonsRow) {
     buttonsRow.appendChild(createButtonTitle("button-questions", "icons/questions.svg", "Questions", buttonQuestionsFunction));
     buttonsRow.appendChild(createButtonTitle("button-play", "icons/play.svg", "Play", buttonPlayFunction));
@@ -69,10 +59,11 @@ function createTitleScreen() {
     buttonsRow.style.opacity = "1"
   }
 }
+// Creates the difficulties screen (Ease, normal, hard, expert)
 function createDifficultiesScreen() {
   if (title) title.innerText = (lang == 0) ? "Select the difficulty" : "Selecciona la dificultad";
-  const difficultiesArr = (lang == 0) ? ["Easy", "Normal", "Hard", "Expert"] : ["Fácil", "Normal", "Dificil", "Experto"];
-  const difficultiesEnum = [Difficulty.Easy, Difficulty.Normal, Difficulty.Hard, Difficulty.Expert];
+  const difficultiesArr = (lang == 0) ? ["Easy", "Normal", "Hard", "Expert"] : ["Fácil", "Normal", "Dificil", "Experto"]; // List of difficulty strings depending on the language
+  const difficultiesEnum = [Difficulty.Easy, Difficulty.Normal, Difficulty.Hard, Difficulty.Expert]; // List of difficulty values used in its enum (Used because you can't take a value of an enum with enum[index])
   difficultiesArr.forEach((text, index) => {
     const difficultyButton: HTMLButtonElement = document.createElement("button");
     difficultyButton.type = "button";
@@ -96,6 +87,7 @@ function createDifficultiesScreen() {
   if (buttonsRow) buttonsRow.style.opacity = "1";
   createMinorButton("back");
 }
+// Creates a question in the screen
 function createQuestionScreen(id: number) {
   if (!gamePlaying) return;
   sfx(SFXClock, "play");
@@ -127,7 +119,6 @@ function createQuestionScreen(id: number) {
     } );
     buttons.push(button);
   }
-
   // Appends the option buttons
   if (questionButtons) {
     buttons.forEach(el => questionButtons.appendChild(el) );
@@ -136,6 +127,7 @@ function createQuestionScreen(id: number) {
   recentQuestionsQueue.push(id);
   if (recentQuestionsQueue.length > maxQuestionsQueue) recentQuestionsQueue.shift();
 }
+// Creates the game over screen when you lose
 function createGameOverScreen() {
   if (title) title.innerText = (lang == 0) ? "Time is out!" : "¡Se acabó el tiempo!";
   const scores = [
@@ -151,6 +143,7 @@ function createGameOverScreen() {
   if (buttonsRow) buttonsRow.style.opacity = "1";
   createMinorButton("back");
 }
+// Creates the icon that is shown when the time is out
 function createIconAnimation(): HTMLImageElement {
   const icon = document.createElement("img");
   icon.classList.add("title-animation");
@@ -158,6 +151,7 @@ function createIconAnimation(): HTMLImageElement {
   icon.alt = "Icon";
   return icon;
 }
+// Appends a new clock to the main element
 function createClock(): void {
   const newClockUI = buildElement("header");
   newClockUI.id = "clock-ui";
@@ -169,6 +163,24 @@ function createClock(): void {
   newClockUI.appendChild(newClockEl);
   main?.appendChild(newClockUI);
 }
+// Appends a new questionsUI to the main element
+function createQuestionsUI(): void {
+  const newQuestionUI = buildElement("section");
+  newQuestionUI.id = "questions-ui";
+  const newTitle = buildElement("div", "title");
+  title = newTitle;
+  const newButtonsRow = buildElement("div", "buttons-row");
+  buttonsRow = newButtonsRow;
+  const credits = buildElement("span", "credits");
+  // This uses local storage instead of the lang variable because at this points page hasn't loaded yet
+  credits.innerHTML = ((localStorage.getItem("DATClang") == "1") ? `Página hecha por` : `Page made by`)  + ` <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a>`;
+  newQuestionUI.appendChild(newTitle);
+  newQuestionUI.appendChild(newButtonsRow);
+  newQuestionUI.appendChild(credits);
+  questionsUI = newQuestionUI;
+  main?.appendChild(newQuestionUI);
+}
+// Appends a new footer to the main element
 function createFooter(): void {
   const footer = buildElement("footer");
   footer.id = "footer-ui";
@@ -182,24 +194,26 @@ function createFooter(): void {
   main?.appendChild(footer);
 }
 
-// Clear Screen Functions
+// CLEAR SCREEN FUNCTIONS
+// Clears the screen and creates a new one
 function clearScreen(timeout: number = 1250, nextScreenFunction: VoidFunction | undefined = undefined, nextScreenType: MenuScreens | undefined = undefined): void {
   // Clears the Screen
   clearAnimation(actualScreen == MenuScreens.Title);
-  // Then creates a new one
+  // Creates a new one
   setTimeout(() => clearQuestion(), timeout);
   if (nextScreenFunction) {
     setTimeout(() => { nextScreenFunction(); }, timeout + 250);
   }
   if (nextScreenType) actualScreen = nextScreenType;
 }
+// Clears the screen after a question (so it avoids some elements)
 function clearQuestion(): void {
   const screenElements: HTMLCollection | undefined = questionsUI?.children;
   let j: number = 0;
   for (let i in screenElements) {
     if (screenElements[j]) {
-      (screenElements[j].classList.contains("answer-container")) ? (void 0, j++) :
-      (screenElements[j].classList.contains("title")) ? (void 0, j++) :
+      (screenElements[j].classList.contains("answer-container")) ? (j++) :
+      (screenElements[j].classList.contains("title")) ? (j++) :
       (screenElements[j].classList.contains("buttons-row")) ? (
         screenElements[j].childNodes.forEach(e => e.remove())
       ) :
@@ -207,6 +221,7 @@ function clearQuestion(): void {
     }
   }
 }
+// Makes an animation before cleaning the screen
 function clearAnimation(isTitle: boolean = false): void {
   if (buttonsRow) {
     buttonsRow.style.opacity = "0";
