@@ -134,7 +134,7 @@ function createQuestionScreen(id: number) {
     questionButtons.style.opacity = "1";
   }
   recentQuestionsQueue.push(id);
-  if (recentQuestionsQueue.length > 40) recentQuestionsQueue.shift();
+  if (recentQuestionsQueue.length > maxQuestionsQueue) recentQuestionsQueue.shift();
 }
 function createGameOverScreen() {
   if (title) title.innerText = (lang == 0) ? "Time is out!" : "¡Se acabó el tiempo!";

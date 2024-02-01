@@ -10,7 +10,9 @@ function checkAnswer(button: HTMLElement, id: number): boolean {
 function requestAnswer(value: boolean): void {
   const answerContainer: HTMLElement = buildElement("div", "answer-container");
   const answer: HTMLElement = buildElement("div", "answer");
-  const answerSpan: HTMLElement = buildElement("span", "answer-span", (value) ? correctLang : incorrectLang);
+  const answerSpan: HTMLElement = buildElement("span", "answer-span",
+    (value) ? ((lang == 0) ? "Correct!" : "Correcto!") : ((lang == 0) ? "Incorrect!" : "Incorrecto!")
+  );
   answer.classList.add((value) ? "ans-correct" : "ans-incorrect");
   answer.appendChild(answerSpan);
   answerContainer.appendChild(answer);

@@ -3,14 +3,7 @@
 // General Script
 
 // Variables
-const root = document.documentElement;
-const main = document.getElementById("screen");
-let questionsUI: HTMLElement | null = document.getElementById("questions-ui");
-let footerUI: HTMLElement | null = document.getElementById("footer-ui");
-let title: HTMLElement | null = document.querySelector(".title");
-let buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
-let clock: HTMLElement | null = document.querySelector(".clock");
-let clockBar: HTMLElement | null = document.querySelector(".clock-bar");
+// Enums
 const enum MenuScreens {
   LanguageSelect = "languageselect",
   Title = "title",
@@ -20,32 +13,39 @@ const enum MenuScreens {
   Question = "question",
   GameOver = "gameover"
 }
-let actualScreen: MenuScreens = MenuScreens.Title;
-let gamePlaying = false;
-let correctLang: string = "Correct!";
-let incorrectLang: string = "Incorrect!";
-const recentQuestionsQueue: number[] = [];
-let actualQuestion: number;
 const enum Difficulty {
   Easy = "easy",
   Normal = "normal",
   Hard = "hard",
   Expert = "expert"
 }
-let incrementTime = 7;
-let decrementTime = 3;
-
+// Element Variables
+const root = document.documentElement;
+const main = document.getElementById("screen");
+let questionsUI: HTMLElement | null = document.getElementById("questions-ui");
+let footerUI: HTMLElement | null = document.getElementById("footer-ui");
+let title: HTMLElement | null = document.querySelector(".title");
+let buttonsRow: HTMLElement | null = document.querySelector(".buttons-row");
+let clock: HTMLElement | null = document.querySelector(".clock");
+let clockBar: HTMLElement | null = document.querySelector(".clock-bar");
+// Game Variables
 let points = 0;
 let correctAnswers = 0;
 let totalAnswers = 0;
-
+let actualScreen: MenuScreens = MenuScreens.Title;
+let gamePlaying = false;
+let actualQuestion: number;
+const recentQuestionsQueue: number[] = [];
+const maxQuestionsQueue: number = 120;
+// Used for difficulties (increment/decrement time on the clock depending on correct/incorrect)
+let incrementTime = 7;
+let decrementTime = 3;
 // SFX
 type sfx = HTMLAudioElement | null;
 const SFXClick: sfx = document.querySelector("#SFXclick");
 const SFXClock: sfx = document.querySelector("#SFXclock");
 const SFXCorrect: sfx = document.querySelector("#SFXcorrect");
 const SFXIncorrect: sfx = document.querySelector("#SFXincorrect");
-
 // Options
 const themes: [string, string][] = [
   ["#6b6b6b44", "#dedede44"],
@@ -71,7 +71,7 @@ function clearElement(element: Element | HTMLElement | null): void {
   }
 }
 // Reload questions, used for language settings
-function loadQuestions() {
+function loadQuestions(): void {
   // Deletes the previous question script if it exists
   const prevScript = document.querySelector('script[src="dist/questions.js"]');
   if (prevScript) prevScript.remove();
@@ -80,7 +80,8 @@ function loadQuestions() {
   questionsScript.src = "dist/questions.js";
   document.body.appendChild(questionsScript);
 }
-function refreshUI() {
+// Refresh the HTML of the UI
+function refreshUI(): void {
   const pointsSpan = document.getElementById("points");
   const correctAnswersSpan = document.getElementById("correct-answers");
   const totalAnswersSpan = document.getElementById("total-answers");
@@ -88,11 +89,13 @@ function refreshUI() {
   if (correctAnswersSpan) correctAnswersSpan.innerText = correctAnswers.toString();
   if (totalAnswersSpan) totalAnswersSpan.innerText = totalAnswers.toString();
 }
-function resetGame() {
+// Resets the game variables
+function resetGame(): void {
   points = 0;
   totalAnswers = 0;
   correctAnswers = 0;
 }
+// Plays or stops a sound effect
 function sfx(audio: sfx, action: "play" | "stop"): void {
   if (audio && soundEffects) {
     if (action == "play") audio.play();
@@ -100,12 +103,12 @@ function sfx(audio: sfx, action: "play" | "stop"): void {
     audio.currentTime = 0;
   }
 }
+// Changes the language of the game
 function changeLanguage(value: 0 | 1): void {
   lang = value;
-  correctLang = (lang == 0) ? "Correct!" : "Correcto!";
-  incorrectLang = (lang == 0) ? "Incorrect!" : "Incorrecto!";
   loadQuestions();
 }
+// Changes the difficulty of the game
 function changeDifficulty(index: Difficulty) {
   switch (index) {
     case Difficulty.Easy:
@@ -123,4 +126,5 @@ function changeDifficulty(index: Difficulty) {
       break;
   }
 }
+// Starts the game with Normal difficulty (I don't think it's necessary, but just in case)
 changeDifficulty(Difficulty.Normal);
