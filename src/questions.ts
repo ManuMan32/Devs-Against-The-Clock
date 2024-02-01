@@ -887,7 +887,7 @@ questions.push(createQuestion (
 questions.push(createQuestion (
   (lang == 0) ? `If I run 'console.log(2 == "2")' what will the console show me?` : `Si ejecuto 'console.log(2 == '2')' ¿Qué me mostrará la consola?`,
   "true",
-  ["false","NaN"]
+  ["false","NaN","2"]
 ));
 // 65
 questions.push(createQuestion (

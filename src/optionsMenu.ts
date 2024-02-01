@@ -53,6 +53,8 @@ function createSettingsMenu(): void {
     button.innerText = (l == 0) ? "English" : "Español";
     button.addEventListener("click", () => {
       lang = l;
+      clearElement(main);
+      createSettingsMenu();
       updateOptions();
     });
     return button;

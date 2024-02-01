@@ -20,9 +20,11 @@ function buildElement(type: string, eClass: string | null = null, eText: string 
 function createTitleScreen(): void {
   // First checks if questions ui already exists. If not, create it
   if (document.querySelector("#questions-ui") == null) {
-    (invertClockAndPoints) ? createFooter() : createClock();
+    // Made this variable because at this point page hasn't loaded yet
+    const checkInvert: boolean = (localStorage.getItem("DATCinvert") == "true");
+    (checkInvert) ? createFooter() : createClock();
     createQuestionsUI();
-    (invertClockAndPoints) ? createClock() : createFooter();
+    (checkInvert) ? createClock() : createFooter();
   }
   // Title and logo
   const h1 = buildElement("h1", "screen-reader");
@@ -172,7 +174,7 @@ function createQuestionsUI(): void {
   const newButtonsRow = buildElement("div", "buttons-row");
   buttonsRow = newButtonsRow;
   const credits = buildElement("span", "credits");
-  // This uses local storage instead of the lang variable because at this points page hasn't loaded yet
+  // This uses local storage instead of the lang variable because at this point page hasn't loaded yet
   credits.innerHTML = ((localStorage.getItem("DATClang") == "1") ? `Página hecha por` : `Page made by`)  + ` <a href="https://manuelcrocco.glitch.me" target="_blank">Manuel Crocco</a>`;
   newQuestionUI.appendChild(newTitle);
   newQuestionUI.appendChild(newButtonsRow);

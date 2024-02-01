@@ -134,7 +134,7 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   flex: 1;
   height: 70%;
   margin: 0 20px;
-  font-size: 25px;
+  font-size: 22px;
 }
 .button-back, .button-info {
   position: absolute;
@@ -518,8 +518,8 @@ work for some weird reason LOL. */
   .question-option { font-size: 9px; }
   .button-right, .button-left { width: 80%; height: 90%; }
   .option-title {
-    font-size: 16px;
-    padding: 0 20px;
+    font-size: 14px;
+    padding: 0 5px;
   }
   .info-text { font-size: 19px; }
   .screen-logo { width: 40%; }

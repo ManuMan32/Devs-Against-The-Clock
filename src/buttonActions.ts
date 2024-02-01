@@ -6,8 +6,8 @@
 
 // Language button
 function addLangButtonFunction(element: HTMLElement, langSet: 0 | 1): void {
-  if (!element.classList.contains("button-blocked")) {
-    element.addEventListener("click", () => {
+  element.addEventListener("click", () => {
+    if (!element.classList.contains("button-blocked")) {
       if (title) title.style.opacity = "0";
       if (buttonsRow) buttonsRow.style.opacity = "0";
       clearScreen(800, void 0, MenuScreens.Title);
@@ -15,8 +15,8 @@ function addLangButtonFunction(element: HTMLElement, langSet: 0 | 1): void {
       setTimeout(() => createTitleScreen(), 800);
       changeLanguage(langSet);
       sfx(SFXClick, "play");
-    });
-  }
+    }
+  });
 }
 const englishButton: HTMLElement | null = document.getElementById("button-english");
 const spanishButton: HTMLElement | null = document.getElementById("button-spanish");
