@@ -9,6 +9,7 @@ let timerStarted = false;
 let timer: number;
 
 // Functions
+// Starts the interval and declares its value in "timer", also can stop it
 function createTimerInterval(stop = false) {
   updateClock();
   if (stop) clearInterval(timer);
@@ -18,15 +19,18 @@ function createTimerInterval(stop = false) {
     if (footerUI) footerUI.style.opacity = "1";
   };
 }
+// Function that will be called in the timer interval
 function timerFunction() {
   time -= 0.1;
   updateClock();
   if (time <= 0) timeIsOut();
 }
+// Updates the clock HTML
 function updateClock() {
   const barPercentage = (time / maxTime) * 100;
   if (clockBar) clockBar.style.width = `${barPercentage}%`;
 }
+// Adds or subtracts time from the clock
 function modifyTime(timeAdd: number, operation: "add" | "subtract") {
   switch (operation) {
     case "add": time += timeAdd; break;
@@ -35,9 +39,10 @@ function modifyTime(timeAdd: number, operation: "add" | "subtract") {
   if (time > maxTime) time = maxTime;
   updateClock();
 }
+// Function that will be called when the time is out
 function timeIsOut() {
   gamePlaying = false;
-  createTimerInterval(true);
+  createTimerInterval(true); // Stops the inteval
   time = maxTime;
   updateClock();
   if (clock) clock.style.opacity = "0";
@@ -55,5 +60,5 @@ function timeIsOut() {
   sfx(SFXIncorrect, "play");
   sfx(SFXClock, "stop");
 }
-
+// Fills the clock before starting the game
 updateClock();
