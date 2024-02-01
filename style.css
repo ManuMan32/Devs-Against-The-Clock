@@ -1,4 +1,5 @@
 /* Devs Against The Clock StyleSheet */
+/* ---- Variables ---- */
 :root {
   --background1: #6b6b6b44;
   --background2: #dedede44;
@@ -16,10 +17,10 @@
   --incorrect-color: #dd3333;
   --incorrect-border: #773333;
   --incorrect-shadow: #ff3333;
+  --logo-ease-in: cubic-bezier(.36,-0.62,.74,.27);
 }
 
-/* ---- GENERAL SELECTORS ---- */
-
+/* ---- General Selectors ---- */
 * {
   margin: 0;
   padding: 0;
@@ -56,18 +57,18 @@ img { user-select: none; -webkit-user-drag: none; }
 
 /* ---- Load Screen ---- */
 .screen-animation {
-  position: absolute;
-  top: 0;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
-  z-index: 99999999;
+  z-index: 100;
 }
 .screen-div {
-  background-color: #fff;
   flex: 1;
   width: 100%;
+  background-color: #fff;
   transition: transform 1s, border .25s;
 }
 .screen-logo {
@@ -81,15 +82,15 @@ img { user-select: none; -webkit-user-drag: none; }
   transition: opacity .5s;
 }
 
-/* ---- Main Menu ---- */
+/* ---- Title Screen ---- */
 .title {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 180px;
-  font-size: 40px;
   padding: 0 40px;
+  font-size: 40px;
   text-shadow: 0 0 4px var(--text-shadow);
   text-align: center;
   background-color: var(--title-color);
@@ -100,12 +101,10 @@ img { user-select: none; -webkit-user-drag: none; }
   top: 0; left: 0;
   bottom: 0; right: 0;
   margin: auto;
-  z-index: 10000;
+  z-index: 50;
   animation: 1.8s ease forwards showLogo;
 }
-.credits {
-  opacity: .75;
-}
+.credits { opacity: .75; }
 .buttons-row {
   display: flex;
   justify-content: space-evenly;
@@ -134,8 +133,8 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 .button-option {
   flex: 1;
   height: 70%;
-  font-size: 25px;
   margin: 0 20px;
+  font-size: 25px;
 }
 .button-back, .button-info {
   position: absolute;
@@ -153,28 +152,43 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   font-size: 16px;
   color: #ffffff88 !important;
 }
-.button-difficulty-easy { background-color: #006c00 !important; border-color: #002200 !important; }
-.button-difficulty-easy:hover { background-color: #007700 !important; }
-.button-difficulty-normal { background-color: #6c6c00 !important; border-color: #222200 !important; }
-.button-difficulty-normal:hover { background-color: #777700 !important; }
-.button-difficulty-hard { background-color: #6c0000 !important; border-color: #220000 !important; }
-.button-difficulty-hard:hover { background-color: #770000 !important; }
-.button-difficulty-expert { background-color: #6c0055 !important; border-color: #220011 !important; }
-.button-difficulty-expert:hover { background-color: #770066 !important; }
-
+.button-icon {
+  width: 90%;
+  height: 90%;
+  filter: invert(80%);
+  opacity: .6;
+}
+.button-back > .button-icon,
+.button-left > .button-icon,
+.button-right > .button-icon {
+  width: 100%;
+  height: 100%;
+}
+.button-difficulty {
+  --back-c: #666;
+  --border-c: #222;
+  --hover-c: #777;
+  background-color: var(--back-c) !important;
+  border-color: var(--border-c) !important;
+}
+.button-difficulty:hover { background-color: var(--hover-c) !important; }
+.button-difficulty-easy { --back-c: #006c00; --border-c: #002200; --hover-c: #007700; }
+.button-difficulty-normal { --back-c: #6c6c00; --border-c: #222200; --hover-c: #777700; }
+.button-difficulty-hard { --back-c: #6c0000; --border-c: #220000; --hover-c: #770000; }
+.button-difficulty-expert { --back-c: #6c0055; --border-c: #220011; --hover-c: #770066; }
 .button-blocked {
   cursor: default !important;
   border: none !important;
   background-color: var(--button-color-focus) !important;
   user-select: none !important;
 }
-.button-blocked-correct {
-  background-color: var(--correct-border) !important;
-}
-.button-blocked-incorrect {
-  background-color: var(--incorrect-color) !important;
-}
-/* ---- Animation ---- */
+.button-blocked-correct { background-color: var(--correct-border) !important; }
+.button-blocked-incorrect { background-color: var(--incorrect-color) !important; }
+
+/* ---- Title/Clock Animation ---- */
+/* It may seem unconvenient to do this with keyframes,
+but I tried with transitions and it doesn't
+work for some weird reason LOL. */
 @keyframes disappearLogo {
   0% { transform: scale(1); }
   100% { transform: scale(0); }
@@ -199,24 +213,24 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 
 /* ---- Questions ---- */
 .answer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 100%; height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .answer {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 100%;
   height: 0;
   border-left: none; border-right: none;
   font-size: 40px;
   font-weight: bold;
   letter-spacing: 4px;
-  z-index: 1000;
+  z-index: 50;
   overflow: hidden;
   user-select: none;
   animation: 1.25s ease forwards showAnswer;
@@ -235,10 +249,10 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 }
 .answer::before, .answer::after {
   content: "";
+  display: inline-block;
   position: absolute;
   left: -140px;
   top: 0;
-  display: inline-block;
   height: 100%;
   width: 100px;
   background-color: var(--ans-shadow);
@@ -246,7 +260,7 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 }
 .answer::before { animation: 2s ease-in-out forwards moveAnswerElement; }
 .answer::after { animation: 1.5s ease-in-out forwards moveAnswerElement; }
-.answer-span { position: relative; z-index: 1001; }
+.answer-span { position: relative; z-index: 75; }
 @keyframes showAnswer {
   0% { height: 0; }
   45% { height: 50%; }
@@ -260,12 +274,8 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   }
 }
 @keyframes moveAnswerElement {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100vw);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100vw); }
 }
 
 /* ---- Clock ---- */
@@ -328,26 +338,26 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 .questions-list {
   display: grid;
   grid-template: repeat(4, 1fr) / 1fr;
-  background-color: var(--button-shadow);
   width: 80%;
   height: 100%;
+  background-color: var(--button-shadow);
   border: 1px solid var(--button-shadow);
   border-right-width: 2px;
   border-left-width: 2px;
 }
 .question {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  position: relative;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, var(--title-color), var(--screen-color));
   padding: 5px;
-  user-select: none;
+  background: linear-gradient(to bottom, var(--title-color), var(--screen-color));
   border: 1px solid var(--button-shadow);
   border-left: none;
   border-right: none;
+  user-select: none;
 }
 .question-id {
   position: absolute;
@@ -373,7 +383,7 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 }
 .question-answer { background-color: var(--correct-border) }
 
-/* ---- Options ---- */
+/* ---- Options/Settings ---- */
 .options-bar {
   display: flex;
   width: 100%;
@@ -383,19 +393,19 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   transition: opacity .5s;
 }
 .option-title {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
   font-size: 20px;
   text-align: center;
   padding: 0 30px;
 }
 .options-div {
+  flex: 2;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  flex: 2;
 }
 .option {
   display: flex;
@@ -403,11 +413,11 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
   align-items: center;
   width: 40px;
   height: 40px;
+  padding: 0 40px;
   background-color: var(--button-color-focus);
   border-radius: 10px;
   border: 2px solid #000;
   color: #fff;
-  padding: 0 40px;
   user-select: none;
 }
 .option:hover {
@@ -420,29 +430,17 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
 }
 
 /* ---- Miscellaneous classes ---- */
+/* Text only shown for screen readers */
 .screen-reader {
   text-indent: -9999px;
 }
-.button-icon {
-  width: 90%;
-  height: 90%;
-  filter: invert(80%);
-  opacity: .6;
-}
-.button-back > .button-icon,
-.button-left > .button-icon,
-.button-right > .button-icon {
-  width: 100%;
-  height: 100%;
-}
+/* Size of the info text */
 .info-text { font-size: 30px; }
 
 /* ---- Responsive ---- */
-
+/* Tablet / Mid devices */
 @Media only screen and (max-width: 1200px) {
-  #questions-ui {
-    width: 85%;
-  }
+  #questions-ui { width: 85%; }
   .button-option {
     height: 60%;
     font-size: 17px;
@@ -453,7 +451,7 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
     padding: 4px;
   }
 }
-
+/* Mobile / Small devices */
 @Media only screen and (max-width: 830px) {
   #screen { padding: 10px; }
   #questions-ui {
@@ -491,9 +489,7 @@ button[type="button"]:active { background-color: var(--button-color-focus); bord
     height: 30px;
     background-color: var(--title-color) !important;
   }
-  .points-ui {
-    grid-column: 1 / 3;
-  }
+  .points-ui { grid-column: 1 / 3; }
   button[type="button"] { padding: 12px; }
   .button-menu, .button-option {
     width: 80%;

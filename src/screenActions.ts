@@ -77,6 +77,7 @@ function createDifficultiesScreen() {
     const difficultyButton: HTMLButtonElement = document.createElement("button");
     difficultyButton.type = "button";
     difficultyButton.classList.add("button-option");
+    difficultyButton.classList.add("button-difficulty");
     difficultyButton.classList.add("button-difficulty-"+difficultiesEnum[index]);
     difficultyButton.innerHTML = text;
     difficultyButton.addEventListener("click", function() {
